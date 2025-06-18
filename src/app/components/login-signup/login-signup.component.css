@@ -1,0 +1,246 @@
+#card-image {
+  margin-top: 30px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.dialog-box {
+  height: 700px;
+  width: 1000px;
+  background-color: transparent;
+  opacity: 1;
+}
+
+#image-label {
+  margin-left: 28px;
+}
+
+.image-card {
+  top: 15%;
+  margin: auto;
+  width: 830px;
+  height: 500px;
+  border-radius: 20px;
+  opacity: 1;
+  padding: 30px 52px 326px 60px;
+}
+
+.right-card {
+  position: relative;
+  bottom: 480px;
+  left: 50%;
+  width: 450px;
+  height: 650px;
+  box-shadow: 10px 5px 15px #00000029;
+  border: 1px solid #e4e4e4;
+  border-radius: 16px;
+  opacity: 1;
+  padding: 28px 50px 68px 47px;
+}
+
+/* login and signup upper button */
+
+.upper-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 40%;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  margin-bottom: 8px;
+}
+
+.under-login {
+  margin-left: 25px;
+  visibility: hidden;
+}
+.under-signup {
+  margin-left: 35px;
+  visibility: hidden;
+}
+
+.under-login.under-login-active {
+  visibility: visible;
+  width: 22px;
+  height: 5px;
+  background-color: #a03037;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.under-signup.under-signup-active {
+  visibility: visible;
+  width: 22px;
+  height: 5px;
+  background-color: #a03037;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.signup-btn.signup-btn-active {
+  color: black;
+}
+
+.login-btn.login-btn-active {
+  color: black;
+}
+
+.wrapper.active {
+  background-color: rgb(167, 167, 167);
+}
+
+.login-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #878787;
+  padding: 0px;
+  font-size: x-large;
+  font-family: Roboto, sans-serif;
+}
+
+.signup-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0px;
+  color: #878787;
+  font-size: x-large;
+  font-family: Roboto, sans-serif;
+}
+
+/* Form styling */
+.email {
+  margin-top: 3px;
+  width: 100%;
+  border: none;
+  margin-bottom: 15px;
+}
+
+.pass {
+  width: 100%;
+}
+
+.password-wrapper {
+  margin-top: 5px;
+}
+
+#forgot-pass-btn {
+  bottom: 37%;
+  left: 65%;
+  padding: 0px;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #9d9d9d;
+}
+
+#eye {
+  color: #9d9d9d;
+}
+
+#login-btn {
+  width: 100%;
+  margin-top: 30px;
+  height: 56px;
+  background-color: #a03037;
+  border: none;
+  outline: none;
+  color: white;
+  font: normal normal normal 15px/20px Roboto, sans-serif;
+  border-radius: 4px;
+}
+
+.end-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+#fb {
+  width: 50%;
+  height: 56px;
+  background-color: #4266b2;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+#google {
+  width: 50%;
+  height: 56px;
+  background-color: #f5f5f5;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+}
+
+.or-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  margin-inline: auto;
+  justify-content: center;
+  margin-top: 50px;
+  height: 30px;
+}
+
+.or-btn {
+  margin-top: 14px;
+  height: 0px;
+  width: 30%;
+  border: none;
+  outline: none;
+  background-color: #e4e4e4;
+  border-radius: 4px;
+}
+
+@media (max-width: 780px) {
+  .image-card {
+    visibility: hidden;
+  }
+  .right-card {
+    margin: auto;
+    left: 0%;
+    top: 0%;
+  }
+}
+
+@media (max-width: 400px) {
+  .image-card {
+    visibility: hidden;
+  }
+  .right-card {
+    visibility: hidden;
+  }
+}
+
+/* Signup Form */
+.signup-form-field {
+  margin-top: 3px;
+  width: 100%;
+  border: none;
+}
+
+#signup-btn {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #a03037;
+  height: 56px;
+  border-radius: 3px;
+  color: white;
+  margin-top: 20px;
+}

@@ -1,0 +1,119 @@
+<div class="wrapper">
+  <mat-toolbar class="toolbar">
+    <div class="toolbar-content">
+      <div class="left">
+        <img src="../../../assets/education.svg" alt="logo" />
+        <h2 id="label">Bookstore</h2>
+      </div>
+
+      <div class="center">
+        <mat-icon id="search-glass-icon">search</mat-icon>
+        <input
+          class="search-bar"
+          placeholder="Search"
+          matInput
+          type="text"
+          [(ngModel)]="value"
+        />
+      </div>
+
+      <div class="end">
+        <div class="profile-wrapper">
+          <ng-container *ngIf="!IsUserLoggedIn">
+            <button
+              class="mat-btn"
+              mat-button
+              [matMenuTriggerFor]="Guest"
+              (menuOpened)="menuOpen = true"
+              (menuClosed)="menuOpen = false"
+            >
+              <mat-icon class="profile-icon">person</mat-icon>
+            </button>
+            <button id="menu-white-bar" [ngClass]="{ show: menuOpen }"></button>
+          </ng-container>
+          <ng-container *ngIf="IsUserLoggedIn">
+            <button
+              id="profile-btn-wo-login"
+              class="mat-btn"
+              mat-button
+              [matMenuTriggerFor]="UserProfile"
+              (menuOpened)="menuOpen = true"
+              (menuClosed)="menuOpen = false"
+            >
+              <span id="btn-name">{{ name }}</span>
+              <mat-icon class="profile-icon">person</mat-icon>
+            </button>
+            <button id="menu-white-bar" [ngClass]="{ show: menuOpen }"></button>
+          </ng-container>
+        </div>
+        <mat-menu #Guest="matMenu" yPosition="below" [overlapTrigger]="false">
+          <div class="menu-content">
+            <h2>Welcome</h2>
+            <p>To access account and manage orders</p>
+            <button matButton (click)="openDialog()" id="menu-auth-btn">
+              LOGIN/SIGNUP
+            </button>
+            <mat-divider></mat-divider>
+            <div class="menu-bottom-btn">
+              <div class="order-btn">
+                <img
+                  id="order-img"
+                  src="../../../assets/orders.png"
+                  alt="cart"
+                />
+                <button class="bottom-btn" id="order-button">My orders</button>
+              </div>
+              <div class="wishlist-btn">
+                <img src="../../../assets/favorite.png" alt="fav" />
+                <button class="bottom-btn">Wishlist</button>
+              </div>
+            </div>
+          </div>
+        </mat-menu>
+        <mat-menu
+          #UserProfile="matMenu"
+          yPosition="below"
+          [overlapTrigger]="false"
+        >
+          <div class="menu-content">
+            <h2>Hello {{ name }}</h2>
+
+            <div class="menu-bottom-btn">
+              <div class="profile">
+                <img
+                  src="../../../assets/profile.png"
+                  alt="profile"
+                  id="profile-img"
+                />
+                <button (click)="onProfileClick()" id="profile-btn">
+                  Profile
+                </button>
+              </div>
+              <div class="order-btn">
+                <img
+                  id="order-img"
+                  src="../../../assets/orders.png"
+                  alt="cart"
+                />
+                <button class="bottom-btn" id="order-button">My orders</button>
+              </div>
+              <div class="wishlist-btn">
+                <img src="../../../assets/favorite.png" alt="fav" />
+                <button class="bottom-btn">Wishlist</button>
+              </div>
+            </div>
+          </div>
+        </mat-menu>
+
+        <button class="mat-btn" mat-button>
+          <mat-icon class="icon">shopping_cart</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <div class="main-content">
+    <app-books-card />
+    <router-outlet />
+  </div>
+</div>

@@ -1,0 +1,161 @@
+<div class="dialog-box">
+  <!-- left card -->
+  <mat-card class="image-card">
+    <img
+      id="card-image"
+      src="../../../assets/login-page-image.png"
+      alt="cart"
+    />
+    <h2 id="image-label"><b>ONLINE BOOK SHOPPING</b></h2>
+  </mat-card>
+
+  <!-- right card -->
+  <mat-card class="right-card">
+    <div class="upper-btn">
+      <div class="login">
+        <div class="login-upper-btn">
+          <button
+            class="login-btn"
+            (click)="onClickLoginBtn()"
+            [ngClass]="{ 'login-btn-active': isLoginActive }"
+          >
+            <b>LOGIN</b>
+          </button>
+          <button
+            class="under-login"
+            [ngClass]="{ 'under-login-active': isLoginActive }"
+          ></button>
+        </div>
+      </div>
+
+      <div class="signup">
+        <div class="signup-upper-btn">
+          <button
+            class="signup-btn"
+            (click)="onClickSignupBtn()"
+            [ngClass]="{ 'signup-btn-active': isSignupActive }"
+          >
+            <b>SIGNUP</b>
+          </button>
+          <button
+            class="under-signup"
+            [ngClass]="{ 'under-signup-active': isSignupActive }"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login form  -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" *ngIf="isLoginActive">
+      <label for="loginInput">Email Id</label>
+      <mat-form-field class="email" appearance="outline">
+        <input id="loginInput" matInput formControlName="emailId" required />
+        <mat-error *ngIf="loginForm.get('emailId')?.invalid">
+          {{ getErrorMessage() }}
+        </mat-error>
+      </mat-form-field>
+
+      <label id="passLabel" for="passInput">Password</label>
+      <div class="password-wrapper">
+        <mat-form-field class="pass" appearance="outline">
+          <input
+            formControlName="password"
+            id="passInput"
+            matInput
+            [type]="hide ? 'password' : 'text'"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon id="eye">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Enter the password
+          </mat-error>
+        </mat-form-field>
+        <button id="forgot-pass-btn">Forgot Password?</button>
+      </div>
+
+      <button id="login-btn" type="submit">Login</button>
+
+      <div class="or-wrapper">
+        <button class="or-btn"></button>
+        <span><h3>OR</h3></span>
+        <button class="or-btn"></button>
+      </div>
+
+      <div class="end-btn">
+        <button id="fb">Facebook</button>
+        <button id="google">Google</button>
+      </div>
+    </form>
+
+    <!-- Signup Form -->
+    <form
+      [formGroup]="singupForm"
+      (ngSubmit)="onSignup()"
+      *ngIf="isSignupActive"
+    >
+      <label for="fullName">Full Name</label>
+      <mat-form-field class="signup-form-field" appearance="outline">
+        <input matInput id="fullName" formControlName="fullName" />
+        <mat-error *ngIf="singupForm.get('fullName')?.hasError('required')">
+          Full Name is required
+        </mat-error>
+        <mat-error *ngIf="singupForm.get('fullName')?.hasError('minlength')">
+          Minimum 4 characters required
+        </mat-error>
+      </mat-form-field>
+      <label for="signup-email">Email Id</label>
+      <mat-form-field class="email" appearance="outline">
+        <input id="signup-email" matInput formControlName="emailId" required />
+        <mat-error *ngIf="singupForm.get('emailId')?.invalid">
+          {{ getErrorMessage() }}
+        </mat-error>
+      </mat-form-field>
+      <label for="signup-pass">Password</label>
+      <mat-form-field class="pass" appearance="outline">
+        <input
+          matInput
+          id="signup-pass"
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon id="eye">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+        <mat-error *ngIf="singupForm.get('password')?.hasError('pattern')">
+          Must have 1 uppercase & 1 special character
+        </mat-error>
+      </mat-form-field>
+      <label for="mob-num">Mobile Number</label>
+      <mat-form-field class="signup-form-field" appearance="outline">
+        <input id="mob-num" matInput formControlName="mobileNumber" />
+        <mat-error
+          *ngIf="singupForm.get('mobileNumber')?.hasError('minlength')"
+        >
+          Enter a valid number
+        </mat-error>
+        <mat-error *ngIf="singupForm.get('mobileNumber')?.hasError('required')">
+          Enter phone number
+        </mat-error>
+      </mat-form-field>
+
+      <button id="signup-btn" type="submit">Signup</button>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,178 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.toolbar-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: auto;
+  width: 86%;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.toolbar {
+  background-color: #a03037;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+}
+
+#label {
+  margin-left: 10px;
+  color: white;
+  font-weight: 200;
+}
+
+.search-bar:focus {
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
+  border: solid transparent 0.1px;
+  outline: none;
+}
+
+.search-bar {
+  width: 490px;
+  height: 33px;
+  border: none;
+  outline: none;
+  padding: 0px 35px;
+}
+
+#search-glass-icon {
+  position: relative;
+  left: 28px;
+  color: gray;
+  top: 8px;
+}
+
+.center {
+  margin-left: 2%;
+  margin-right: 35%;
+}
+
+.end {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.icon {
+  color: white;
+}
+
+#menu-white-bar {
+  visibility: hidden;
+  position: absolute;
+}
+
+#menu-white-bar.show {
+  visibility: visible;
+  position: absolute;
+  height: 7px;
+  width: 65px;
+  border-radius: 10px;
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+.mat-btn {
+  padding: 0px;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 65px;
+}
+
+.profile-icon {
+  color: white;
+  position: absolute;
+}
+
+.profile-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.menu-content {
+  padding: 0px 10px 5px 20px;
+}
+
+#menu-auth-btn {
+  width: 127px;
+  height: 33px;
+  border: #a03037 1px solid;
+  color: #a03037;
+  background-color: transparent;
+  margin-bottom: 15px;
+}
+
+.menu-bottom-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#profile-btn {
+  width: 50px;
+  height: 20px;
+  outline: none;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+  color: #878787;
+  margin-left: 19px;
+}
+
+#btn-name {
+  color: white;
+}
+
+.bottom-btn {
+  width: 100px;
+  height: 20px;
+  border: none;
+  outline: none;
+  padding: 0px;
+  background-color: transparent;
+  color: #878787;
+}
+
+.order-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#order-button {
+  margin-left: 5px;
+}
+
+.wishlist-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

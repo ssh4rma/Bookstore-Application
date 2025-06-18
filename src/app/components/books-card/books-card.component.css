@@ -1,0 +1,162 @@
+.wrapper {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  z-index: -1;
+}
+
+.cards-wrapper {
+  flex: 1;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 170px 40px 170px;
+}
+
+.left-stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#title {
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+#totalQuantity {
+  color: gray;
+  font-size: large;
+  margin-left: 10px;
+}
+
+#sort-option {
+  padding: 5px;
+  border: solid 1px #00000029;
+  font: normal normal normal 12px/16px Roboto, sans-serif;
+}
+
+.footer {
+  background-color: black;
+  height: 50px;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.footer-content {
+  color: white;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: auto;
+  width: 90%;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 50px;
+  margin-left: 170px;
+  margin-right: 170px;
+}
+
+.card-content {
+  width: 300px;
+  height: 350px;
+}
+
+.book-image {
+  background-color: #f5f5f5;
+}
+
+mat-card-content {
+  padding: 0px;
+}
+
+.mat-mdc-card-content:first-child {
+  padding-top: 0px;
+}
+
+#image {
+  padding: 10px;
+  width: 150px;
+  height: 180px;
+  margin-left: 70px;
+}
+
+.book-info {
+  margin-left: 20px;
+}
+
+#actualPrice {
+  margin-left: 10px;
+  text-decoration: line-through;
+}
+
+.title {
+  margin-top: 10px;
+}
+
+.author {
+  margin-top: 5px;
+}
+
+#book-title {
+  font: normal normal normal 21px/19px Roboto, sans-serif;
+  font-weight: 400;
+}
+
+#book-author {
+  color: gray;
+}
+
+.rating-btn {
+  margin-top: 5px;
+}
+
+#rating {
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+#quantity {
+  color: gray;
+  margin-left: 5px;
+}
+
+.price {
+  margin-top: 10px;
+}
+
+#disPrice {
+  font: normal normal bold 17px/16px Roboto, sans-serif;
+}
+
+#out-of-stock {
+  position: absolute;
+  width: 178px;
+  height: 37px;
+  color: black;
+  background-color: white;
+  top: 40%;
+  left: 20%;
+  border: none;
+  outline: none;
+}
+
+.card-content.zeroQnt {
+  background-color: #898585;
+}
+
+#profile-img {
+  margin-top: 3px;
+}

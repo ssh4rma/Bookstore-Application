@@ -1,0 +1,72 @@
+<div class="wrapper">
+  <div class="cards-wrapper">
+    <div class="top-bar">
+      <div class="left-stats">
+        <span id="title">Books</span>
+        <span id="totalQuantity">({{ books.length }} items)</span>
+      </div>
+      <div class="sortby">
+        <select id="sort-option">
+          <option>Sort by Relevance</option>
+          <option>Sort by Price (Low to high)</option>
+          <option>Sort by relevance (High to Low)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="cards">
+      <mat-card
+        class="card-content"
+        *ngFor="let book of paginatedBooks"
+        [ngStyle]="{ zeroQnt: book.quantity === 0 }"
+      >
+        <button *ngIf="book.quantity === 0" id="out-of-stock">
+          <h2>OUT OF STOCK</h2>
+        </button>
+        <mat-card-content>
+          <div class="book-image">
+            <img
+              id="image"
+              src="../../../assets/book-cover.jpg"
+              alt="book-cover"
+            />
+          </div>
+          <div class="book-info">
+            <div class="title">
+              <span id="book-title">{{ book.bookName }}</span>
+            </div>
+            <div class="author">
+              <span id="book-author">by {{ book.author }}</span>
+            </div>
+            <div class="rating-btn">
+              <button id="rating">4.5 ★</button> <span id="quantity">(20)</span>
+            </div>
+            <div class="price">
+              <span id="disPrice"
+                ><b>Rs.{{ book.discountPrice }}</b
+                ><span id="actualPrice">Rs.{{ book.price }}</span></span
+              >
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="end-content">
+    <mat-paginator
+      [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="onPageChange($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+
+    <mat-toolbar class="footer">
+      <div class="footer-content">
+        <p>Copyright © 2025, Bookstore Private Limited. All Rights Reserved</p>
+      </div>
+    </mat-toolbar>
+  </div>
+</div>
