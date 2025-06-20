@@ -101,7 +101,6 @@
 
 .profile-icon {
   color: white;
-  position: absolute;
 }
 
 .profile-wrapper {
@@ -147,10 +146,6 @@
   margin-left: 19px;
 }
 
-#btn-name {
-  color: white;
-}
-
 .bottom-btn {
   width: 100px;
   height: 20px;
@@ -175,4 +170,39 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+#logout-btn {
+  margin-top: 5px;
+  width: 123px;
+  height: 33px;
+  background-color: transparent;
+  color: #a03037;
+  border: #a03037 solid 1px;
+}
+
+#cart-label {
+  position: absolute;
+  top: 5px;
+  right: 1px;
+  color: white;
+  font-weight: 100;
+}
+
+#guest-profile-label {
+  position: absolute;
+  top: 2px;
+  right: 0.01px;
+  font-weight: 100;
+  padding: 0px;
+  color: white;
+}
+
+#btn-name {
+  color: white;
+  position: absolute;
+  top: 2px;
+  right: 0.1px;
+  font-weight: 100;
+  padding: 0px;
 }

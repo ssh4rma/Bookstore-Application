@@ -28,6 +28,7 @@
               (menuClosed)="menuOpen = false"
             >
               <mat-icon class="profile-icon">person</mat-icon>
+              <p id="guest-profile-label">Profile</p>
             </button>
             <button id="menu-white-bar" [ngClass]="{ show: menuOpen }"></button>
           </ng-container>
@@ -40,8 +41,8 @@
               (menuOpened)="menuOpen = true"
               (menuClosed)="menuOpen = false"
             >
-              <span id="btn-name">{{ name }}</span>
               <mat-icon class="profile-icon">person</mat-icon>
+              <span id="btn-name">{{ name }}</span>
             </button>
             <button id="menu-white-bar" [ngClass]="{ show: menuOpen }"></button>
           </ng-container>
@@ -101,19 +102,21 @@
                 <img src="../../../assets/favorite.png" alt="fav" />
                 <button class="bottom-btn">Wishlist</button>
               </div>
+
+              <button id="logout-btn" (click)="onClickLogout()">LOGOUT</button>
             </div>
           </div>
         </mat-menu>
 
         <button class="mat-btn" mat-button>
           <mat-icon class="icon">shopping_cart</mat-icon>
+          <span id="cart-label">Cart</span>
         </button>
       </div>
     </div>
   </mat-toolbar>
 
   <div class="main-content">
-    <app-books-card />
     <router-outlet />
   </div>
 </div>

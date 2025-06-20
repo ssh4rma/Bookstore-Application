@@ -55,14 +55,13 @@
 
   <div class="end-content">
     <mat-paginator
-      [length]="100"
+      [length]="totalSize"
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 25, 100]"
       (page)="onPageChange($event)"
       aria-label="Select page"
     >
     </mat-paginator>
-
     <mat-toolbar class="footer">
       <div class="footer-content">
         <p>Copyright © 2025, Bookstore Private Limited. All Rights Reserved</p>

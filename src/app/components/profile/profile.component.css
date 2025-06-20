@@ -1,0 +1,172 @@
+.wrapper {
+  margin: 90px 100px 0px 100px;
+}
+
+#profile-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+}
+
+#home-btn {
+  color: #ababaa;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+}
+
+.personal-details {
+  margin-top: 30px;
+  margin-left: 60px;
+}
+
+#label {
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+#edit-btn {
+  margin-left: 10px;
+  outline: none;
+  border: none;
+  color: #a03037;
+  background-color: transparent;
+  font-size: large;
+  font-weight: 600;
+}
+
+.user-info-form {
+  margin-top: 15px;
+  width: 600px;
+  height: 400px;
+}
+
+.user-info-form > mat-form-field {
+  width: 100%;
+}
+
+.user-info-form > label {
+  font-weight: 500;
+}
+
+.address-details {
+  width: 600px;
+  min-height: 400px;
+}
+
+.address-topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#add-address {
+  margin-left: 199px;
+  outline: none;
+  border: none;
+  color: #a03037;
+  background-color: transparent;
+  font-size: large;
+  font-weight: 600;
+  padding: 5px;
+}
+
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.address-input-form {
+  width: 600px;
+}
+
+#address-no {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+#address-type {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+#address-text-area {
+  width: 512px;
+  height: 82px;
+  font-family: Roboto;
+  width: 99%;
+}
+
+.address-wrapper {
+  margin-top: 10px;
+}
+
+.town-state {
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+label {
+  font: normal normal normal 15px/16px Roboto;
+}
+
+.type {
+  margin-bottom: 20px;
+}
+
+.user-address {
+  margin-top: 20px;
+}
+
+.town-state-input {
+  width: 251px;
+  height: 45px;
+}
+
+#add-address-submit-btn {
+  border: solid #a03037 2px;
+  outline: none;
+  width: 123px;
+  height: 29px;
+  background-color: transparent;
+  color: #a03037;
+  margin: auto;
+}
+
+#edit-btn {
+  background-color: transparent;
+  border: none;
+  color: #a03037;
+}
+
+#save-btn {
+  background-color: transparent;
+  border: solid blue 1px;
+  color: blue;
+  width: 123px;
+  height: 29px;
+  font-size: large;
+}
+
+.footer {
+  background-color: black;
+  height: 50px;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.footer-content {
+  color: white;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: auto;
+  width: 90%;
+}

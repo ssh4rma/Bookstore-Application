@@ -1,6 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatDialogModule,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +21,7 @@ import {
 } from '@angular/forms';
 import { LoginService } from 'src/app/service/login/login.service';
 import { Router } from '@angular/router';
+import { ToolbarDataService } from 'src/app/service/toolbar-data/toolbar-data.service';
 
 @Component({
   selector: 'app-login-signup',
@@ -50,7 +55,9 @@ export class LoginSignupComponent {
   constructor(
     private readonly fb: FormBuilder,
     private readonly loginService: LoginService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly toolbarData: ToolbarDataService,
+    public readonly dialogRef: MatDialogRef<LoginSignupComponent>
   ) {}
 
   singupForm = this.fb.group({
@@ -77,8 +84,6 @@ export class LoginSignupComponent {
     ]),
   });
 
-  onSubmit(): void {}
-
   getErrorMessage() {
     const emailControlLogin = this.loginForm.get('emailId');
     const emailControlSignup = this.loginForm.get('emailId');
@@ -99,6 +104,7 @@ export class LoginSignupComponent {
   onClickLoginBtn(): void {
     this.isLoginActive = true;
     this.isSignupActive = false;
+    this.toolbarData.loginState$.next(true);
   }
 
   onClickSignupBtn(): void {
@@ -120,11 +126,11 @@ export class LoginSignupComponent {
       next: (res: any) => {
         console.log(res.result.accessToken);
         localStorage.setItem('token', res.result.accessToken);
+        this.toolbarData.loginState$.next(true);
+        this.dialogRef.close();
       },
       error: (err) => console.log(err),
     });
-
-    this.router.navigate(['/home']);
   }
 
   onSignup(): void {

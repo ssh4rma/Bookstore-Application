@@ -1,10 +1,217 @@
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus inventore
-reiciendis aliquam sunt, et in nesciunt enim totam. Quis incidunt unde labore
-iure facere amet enim animi fugit alias eius, error eaque a aliquid consequuntur
-repudiandae possimus voluptas? Dolor molestiae beatae fugiat, accusamus aut
-harum quasi labore omnis porro vitae ex sit consectetur culpa nulla ad, at ab
-aliquam iste? Sed sapiente blanditiis iste consequatur. Ea reprehenderit
-officiis itaque veritatis. Nostrum pariatur accusamus amet a assumenda id odio
-mollitia corrupti ipsum dignissimos omnis ab ipsam magni libero, autem
-architecto dolores consequatur sunt aliquid! Eos debitis non itaque natus,
-consectetur exercitationem!
+<div class="wrapper">
+  <div>
+    <button id="home-btn" (click)="onClickHome()">Home /</button>
+    <button id="profile-btn">Profile</button>
+  </div>
+
+  <div class="personal-details">
+    <span id="label">Personal Details</span>
+    <button id="edit-btn">Edit</button>
+
+    <div class="user-info-form">
+      <label for="name">Full Name</label>
+      <mat-form-field appearance="outline">
+        <input
+          class="user-info-input"
+          matInput
+          disabled
+          placeholder="{{ name }}"
+        />
+      </mat-form-field>
+
+      <label for="email">Email Id</label>
+      <mat-form-field appearance="outline">
+        <input
+          class="user-info-input"
+          matInput
+          disabled
+          placeholder="{{ email }}"
+        />
+      </mat-form-field>
+
+      <label for="password">Password</label>
+      <mat-form-field appearance="outline">
+        <input
+          class="user-info-input"
+          matInput
+          disabled
+          placeholder="*********"
+        />
+      </mat-form-field>
+
+      <label for="name">Mobile Number</label>
+      <mat-form-field appearance="outline">
+        <input
+          class="user-info-input"
+          matInput
+          disabled
+          placeholder="{{ mobnumber }}"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="address-details">
+      <div class="address-topbar">
+        <span id="label">Address Details</span>
+        <button id="add-address" (click)="addNewAddress()">
+          Add New Address
+        </button>
+      </div>
+
+      <form
+        [formGroup]="addressForm"
+        class="address-input-form"
+        (ngSubmit)="onClickAddAddress()"
+        *ngIf="addAddressButton"
+      >
+        <div class="form-wrapper">
+          <label>Address</label>
+          <mat-form-field appearance="outline" style="width: 100%">
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="10"
+              formControlName="address"
+            ></textarea>
+          </mat-form-field>
+
+          <label>City/Town</label>
+          <mat-form-field style="width: 100%">
+            <input matInput formControlName="cityOrTown" />
+          </mat-form-field>
+
+          <label>State</label>
+          <mat-form-field style="width: 100%">
+            <input matInput formControlName="state" />
+          </mat-form-field>
+
+          <label>Type</label>
+          <mat-radio-group
+            formControlName="type"
+            style="display: flex; gap: 20px"
+          >
+            <mat-radio-button value="Home">Home</mat-radio-button>
+            <mat-radio-button value="Work">Work</mat-radio-button>
+            <mat-radio-button value="Others">Others</mat-radio-button>
+          </mat-radio-group>
+
+          <button id="add-address-submit-btn" type="submit">Add Address</button>
+        </div>
+      </form>
+
+      <div class="list-of-address" *ngIf="!addAddressButton">
+        <div
+          class="user-address"
+          *ngFor="let address of addressArray; let i = index"
+        >
+          <span id="address-no">{{ i + 1 }}. </span>
+          <span id="address-type">{{ address.type }}</span>
+          <button (click)="onEditAddress(i)" id="edit-btn">Edit</button>
+
+          <!-- readonly -->
+          <div *ngIf="editIndex !== i">
+            <div class="address-wrapper">
+              <label>Address</label>
+              <mat-form-field appearance="outline" style="width: 100%">
+                <textarea
+                  matInput
+                  disabled
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"
+                  >{{ address.address }}</textarea
+                >
+              </mat-form-field>
+            </div>
+
+            <div class="town-state">
+              <div>
+                <label>City/Town</label>
+                <mat-form-field style="width: 100%">
+                  <input matInput [value]="address.cityOrTown" disabled />
+                </mat-form-field>
+              </div>
+              <div>
+                <label>State</label>
+                <mat-form-field style="width: 100%">
+                  <input matInput [value]="address.state" disabled />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="type">
+              <label>Type</label>
+              <mat-radio-group
+                [value]="address.type"
+                disabled
+                style="display: flex; gap: 20px"
+              >
+                <mat-radio-button value="Home">Home</mat-radio-button>
+                <mat-radio-button value="Work">Work</mat-radio-button>
+                <mat-radio-button value="Others">Others</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+          <!-- on click edit button form -->
+          <form [formGroup]="addressForm" *ngIf="editIndex === i">
+            <div class="address-wrapper">
+              <label>Address</label>
+              <mat-form-field appearance="outline" style="width: 100%">
+                <textarea
+                  matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"
+                  formControlName="address"
+                ></textarea>
+              </mat-form-field>
+            </div>
+
+            <div class="town-state">
+              <div>
+                <label>City/Town</label>
+                <mat-form-field style="width: 100%">
+                  <input matInput formControlName="cityOrTown" />
+                </mat-form-field>
+              </div>
+              <div>
+                <label>State</label>
+                <mat-form-field style="width: 100%">
+                  <input matInput formControlName="state" />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="type">
+              <label>Type</label>
+              <mat-radio-group
+                formControlName="type"
+                style="display: flex; gap: 20px"
+              >
+                <mat-radio-button value="Home">Home</mat-radio-button>
+                <mat-radio-button value="Work">Work</mat-radio-button>
+                <mat-radio-button value="Others">Others</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <button id="save-btn" type="button" (click)="saveEditedAddress()">
+              Save
+            </button>
+          </form>
+
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-toolbar class="footer">
+  <div class="footer-content">
+    <p>Copyright © 2025, Bookstore Private Limited. All Rights Reserved</p>
+  </div>
+</mat-toolbar>
