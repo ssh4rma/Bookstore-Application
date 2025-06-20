@@ -1,38 +1,44 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http/http.service';
-import { BehaviorSubject } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class WishlistService {
+export class FeedbackService {
   constructor(private readonly http: HttpService) {}
 
-  list$ = new BehaviorSubject([]);
+  feedbackList$ = new BehaviorSubject([]);
 
-  getWishlist() {
+  postFeedback(data: any, productId: any) {
     this.http.getHeader();
     let token = this.http.token;
-    let url =
-      'https://bookstore.incubation.bridgelabz.com/bookstore_user/get_wishlist_items';
+    let url = `https://bookstore.incubation.bridgelabz.com/bookstore_user/add/feedback/${productId}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'application/json',
       'x-access-token': token,
     });
-    return this.http.getAPI(url, { headers });
+
+    return this.http.postAPI(url, data, { headers });
   }
 
-  postWishList(productId: any) {
+  getFeedback(productId: any) {
     this.http.getHeader();
     let token = this.http.token;
-    let url = `https://bookstore.incubation.bridgelabz.com/bookstore_user/add_wish_list/${productId}`;
+    let url = `https://bookstore.incubation.bridgelabz.com/bookstore_user/get/feedback/${productId}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'application/json',
       'x-access-token': token,
     });
-    return this.http.postAPI(url, {}, { headers });
+
+    this.http.getAPI(url, { headers }).subscribe({
+      next: (res: any) => {
+        this.feedbackList$.next(res);
+      },
+      error: (err) => console.log(err),
+    });
   }
 }

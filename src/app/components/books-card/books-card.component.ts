@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { BookService } from 'src/app/service/books/book.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books-card',
@@ -15,12 +16,16 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 export class BooksCardComponent {
   books: any[] = [];
   paginatedBooks: any[] = [];
+  hoveredIndex = -1;
 
   totalSize = 0;
   currentPage = 0;
   pageSize = 10;
 
-  constructor(private readonly bookService: BookService) {}
+  constructor(
+    private readonly bookService: BookService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchBooks();
@@ -49,5 +54,15 @@ export class BooksCardComponent {
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex;
     this.updatePaginatedData();
+  }
+
+  quickViewHandlerIn(idx: number): void {
+    this.hoveredIndex = idx;
+  }
+  quickViewHandlerOut(): void {
+    this.hoveredIndex = -1;
+  }
+  onClickQuickView(idx: number): void {
+    this.router.navigate(['/bookDetail', this.books[idx]._id]);
   }
 }

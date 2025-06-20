@@ -160,3 +160,20 @@ mat-card-content {
 #profile-img {
   margin-top: 3px;
 }
+
+#quick-view {
+  visibility: hidden;
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  height: 30px;
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+#quick-view.active {
+  visibility: visible;
+  position: absolute;
+}

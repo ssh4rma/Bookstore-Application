@@ -26,7 +26,6 @@ export class BookService {
 
     this.http.getAPI(url, { headers }).subscribe({
       next: (res: any) => {
-        console.log(res);
         this.bookSubject.next(res.result as BookData[]);
       },
       error: (err) => console.error(err),

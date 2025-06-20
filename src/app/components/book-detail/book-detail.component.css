@@ -1,0 +1,224 @@
+.wrapper {
+  margin-top: 100px;
+  margin-left: 147px;
+}
+
+#home-nav-btn {
+  background-color: transparent;
+  border: none;
+  font-size: large;
+  font-weight: 500;
+  color: grey;
+}
+
+#book-detail-btn {
+  background-color: transparent;
+  border: none;
+  font-size: large;
+  font-weight: 500;
+}
+
+.book-details-wrapper {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.book-image {
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+  height: 585px;
+  gap: 2px;
+}
+
+.side-image {
+  width: 10%;
+}
+.main-image {
+  width: 100%;
+  height: 100%;
+}
+
+.side-img {
+  padding: 3px;
+  width: 90%;
+  height: 12%;
+  border: solid #878787 0.5px;
+}
+
+.main-img {
+  width: 81%;
+  height: 80%;
+  padding: 50px;
+  border: solid #878787 0.5px;
+}
+
+.bottom-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+#add-to-cart-btn {
+  width: 50%;
+  height: 50px;
+  background-color: #a03037;
+  color: white;
+  font-size: 18px;
+  border: none;
+}
+
+#wishlist-btn {
+  width: 50%;
+  height: 50px;
+  background-color: #333232;
+  color: white;
+  font-size: 18px;
+  border: none;
+}
+
+.book-details {
+  width: 55%;
+  min-height: 50%;
+}
+
+@media (max-width: 1450px) {
+  .book-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+}
+
+.title > h1 {
+  font-size: 35px;
+}
+
+.author > span {
+  font-size: 25px;
+  color: grey;
+}
+
+#rating {
+  border: none;
+  background-color: green;
+  color: white;
+  font-size: large;
+}
+
+.rating-btn {
+  margin-top: 10px;
+}
+
+.rating-btn > span {
+  color: grey;
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.price > span {
+  font-size: 25px;
+}
+
+.price {
+  margin-top: 25px;
+}
+
+#disPrice {
+  font-size: 35px;
+}
+
+#actualPrice {
+  margin-left: 15px;
+  text-decoration: line-through;
+  color: grey;
+  font-size: 20px;
+}
+
+.book-info {
+  margin-bottom: 30px;
+}
+
+.book-descrip > h2 {
+  color: gray;
+}
+
+.book-descrip > p {
+  font-size: 18px;
+  color: rgb(84, 82, 82);
+}
+
+.book-descrip {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.feedback-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.feedback-input-wrapper {
+  background-color: #f5f5f5;
+  padding: 30px;
+}
+
+.rating {
+  margin-bottom: 20px;
+}
+
+.rating > button {
+  border: none;
+  background-color: transparent;
+}
+
+#feedback-textarea {
+  width: 100%;
+  height: 10%;
+  font-family: Roboto, sans-serif;
+  font-size: large;
+}
+
+.feedback-input-wrapper > button {
+  width: 100px;
+  height: 35px;
+  font-size: 18px;
+  margin-left: 88%;
+  background-color: #3371b5;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 4px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.user-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#feedback-user-name {
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+.feedback-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.feedback-comment-stars > span {
+  font-size: 30px;
+}
+
+.comments > p {
+  font-size: 23px;
+  color: grey;
+}

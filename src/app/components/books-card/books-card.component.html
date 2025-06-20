@@ -17,8 +17,10 @@
     <div class="cards">
       <mat-card
         class="card-content"
-        *ngFor="let book of paginatedBooks"
+        *ngFor="let book of paginatedBooks; let i = index"
         [ngStyle]="{ zeroQnt: book.quantity === 0 }"
+        (mouseenter)="quickViewHandlerIn(i)"
+        (mouseleave)="quickViewHandlerOut()"
       >
         <button *ngIf="book.quantity === 0" id="out-of-stock">
           <h2>OUT OF STOCK</h2>
@@ -30,6 +32,13 @@
               src="../../../assets/book-cover.jpg"
               alt="book-cover"
             />
+            <button
+              (click)="onClickQuickView(i)"
+              id="quick-view"
+              [ngClass]="{ active: hoveredIndex === i }"
+            >
+              QUICK VIEW
+            </button>
           </div>
           <div class="book-info">
             <div class="title">
