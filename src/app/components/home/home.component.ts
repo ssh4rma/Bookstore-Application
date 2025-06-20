@@ -10,12 +10,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { Router, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { LoginSignupComponent } from '../login-signup/login-signup.component';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { BookService } from 'src/app/service/books/book.service';
 import { MatCardModule } from '@angular/material/card';
 import { ToolbarDataService } from 'src/app/service/toolbar-data/toolbar-data.service';
 import { DialogRef } from '@angular/cdk/dialog';
-import { BooksCardComponent } from '../books-card/books-card.component';
 
 @Component({
   selector: 'app-home',
@@ -87,5 +86,9 @@ export class HomeComponent {
     this.toolbarData.loginState$.next(false);
     localStorage.removeItem('token');
     localStorage.removeItem('name');
+  }
+
+  onClickWishlist(): void {
+    this.router.navigate(['wishlist'], { relativeTo: this.route });
   }
 }

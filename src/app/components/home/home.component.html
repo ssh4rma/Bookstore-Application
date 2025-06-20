@@ -100,7 +100,9 @@
               </div>
               <div class="wishlist-btn">
                 <img src="../../../assets/favorite.png" alt="fav" />
-                <button class="bottom-btn">Wishlist</button>
+                <button (click)="onClickWishlist()" class="bottom-btn">
+                  Wishlist
+                </button>
               </div>
 
               <button id="logout-btn" (click)="onClickLogout()">LOGOUT</button>

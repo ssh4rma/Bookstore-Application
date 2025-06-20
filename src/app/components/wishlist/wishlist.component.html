@@ -1,0 +1,61 @@
+<div class="wrapper">
+  <div *ngIf="isUserLogin" class="login-page">
+    <h1>PLEASE LOGIN</h1>
+    <h3>Login to view items in your wishlist.</h3>
+
+    <img
+      id="wishlist-img"
+      src="../../../assets/wishlist-page.svg"
+      alt="wishlist"
+    />
+
+    <button (click)="openDialog()" id="login-signup-btn">LOGIN/SIGNUP</button>
+  </div>
+
+  <div *ngIf="!isUserLogin" class="wishlist-wrapper">
+    <div class="navigation-panel">
+      <button (click)="onClickHome()" id="home-nav-btn">Home /</button>
+      <button id="wishlist-nav-btn">My Wishlist</button>
+    </div>
+
+    <div class="list">
+      <table class="wishlist-table">
+        <th class="table-heading">
+          <h2>My Wishlist ({{ wishlist.length }})</h2>
+        </th>
+        <tr *ngFor="let wish of wishlist">
+          <div class="list-wrapper">
+            <div class="list-image">
+              <img
+                class="book-image"
+                src="../../../assets/book-cover.jpg"
+                alt="book-cover"
+              />
+            </div>
+            <div class="list-book-info">
+              <div class="info">
+                <div class="title">
+                  <span id="book-title">{{ wish.product_id.bookName }}</span>
+                </div>
+                <div class="author">
+                  <span id="book-author">by {{ wish.product_id.author }}</span>
+                </div>
+                <div class="price">
+                  <span id="disPrice"
+                    ><b>Rs.{{ wish.product_id.discountPrice }}</b
+                    ><span id="actualPrice"
+                      >Rs.{{ wish.product_id.price }}</span
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="delete-btn">
+                <button><mat-icon>delete</mat-icon></button>
+              </div>
+            </div>
+          </div>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
