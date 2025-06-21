@@ -35,4 +35,16 @@ export class WishlistService {
     });
     return this.http.postAPI(url, {}, { headers });
   }
+
+  deleteWishListItem(productId: any) {
+    this.http.getHeader();
+    let token = this.http.token;
+    let url = `https://bookstore.incubation.bridgelabz.com/bookstore_user/remove_wishlist_item/${productId}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'x-access-token': token,
+    });
+    return this.http.deleteAPI(url, { headers });
+  }
 }

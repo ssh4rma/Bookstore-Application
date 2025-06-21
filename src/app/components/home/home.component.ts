@@ -89,6 +89,10 @@ export class HomeComponent {
   }
 
   onClickWishlist(): void {
-    this.router.navigate(['wishlist'], { relativeTo: this.route });
+    this.router.navigate(['wishlist']);
+  }
+
+  onClickCart(): void {
+    this.router.navigate(['cart']);
   }
 }

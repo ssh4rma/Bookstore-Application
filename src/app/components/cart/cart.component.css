@@ -1,0 +1,180 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+  min-height: calc(100vh - 90px);
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 130px;
+}
+
+.footer {
+  background-color: black;
+  height: 50px;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.footer-content {
+  color: white;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: auto;
+  width: 90%;
+}
+
+#home-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: gray;
+}
+
+#cart-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+}
+
+.order-panel {
+  margin-top: 30px;
+}
+
+.title {
+  font-size: 20px;
+}
+
+mat-expansion-panel {
+  width: 774px;
+}
+
+#map {
+  width: 200px;
+  height: 30px;
+}
+
+/* cart item  */
+
+th {
+  text-align: left;
+  background-color: #f5f5f5;
+  width: 1022px;
+  height: 55px;
+}
+
+th > h2 {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+table,
+th,
+tr {
+  border: #e4e4e4 solid 2px;
+  border-collapse: collapse;
+}
+
+.book-image {
+  width: 70px;
+  height: 90px;
+}
+
+.list-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  padding: 25px;
+}
+
+.list-book-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 80%;
+}
+
+.delete-btn > button {
+  border: none;
+  background-color: transparent;
+  color: grey;
+}
+
+.title > span {
+  font: normal normal normal 20px/24px Roboto, sans-serif;
+  font-weight: 500;
+}
+
+.author > span {
+  color: #9d9d9d;
+  font: normal normal normal 17px/16px Roboto, sans-serif;
+}
+
+#actualPrice {
+  color: #9d9d9d;
+  text-decoration: line-through;
+  margin-left: 10px;
+  font-weight: 400;
+}
+
+.price > span {
+  font: normal normal bold 17px/20px Roboto, sans-serif;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list {
+  margin-top: 30px;
+  margin-left: 5px;
+}
+
+#item-quan {
+  font-size: 20px;
+  width: 41px;
+  height: 28px;
+  border: 1px solid #dbdbdb;
+  border-radius: 1px;
+  text-align: center;
+  padding-top: 6px;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.quant-btn {
+  border-radius: 50%;
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+  width: 35px;
+  height: 35px;
+  font-size: 25px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+}
+
+#remove-btn {
+  background-color: transparent;
+  border: none;
+  width: 42px;
+  height: 15px;
+  font-size: 18px;
+}

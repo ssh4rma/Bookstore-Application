@@ -4,6 +4,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BooksCardComponent } from './components/books-card/books-card.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { CartComponent } from './components/cart/cart.component';
 
 export const routes: Routes = [
   {
@@ -14,6 +15,7 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'wishlist', component: WishlistComponent },
       { path: 'bookDetail/:id', component: BookDetailComponent },
+      { path: 'cart', component: CartComponent },
     ],
   },
 ];

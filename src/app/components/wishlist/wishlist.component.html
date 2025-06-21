@@ -49,8 +49,11 @@
                   >
                 </div>
               </div>
+
               <div class="delete-btn">
-                <button><mat-icon>delete</mat-icon></button>
+                <button (click)="onDeleteItem(wish.product_id._id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
               </div>
             </div>
           </div>

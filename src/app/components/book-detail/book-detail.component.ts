@@ -8,6 +8,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { FormsModule } from '@angular/forms';
 import { FeedbackService } from 'src/app/service/feedback/feedback.service';
 import { WishlistService } from 'src/app/service/wishlist/wishlist.service';
+import { CartService } from 'src/app/service/cart/cart.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -28,7 +29,8 @@ export class BookDetailComponent {
     private readonly route: ActivatedRoute,
     private readonly bookService: BookService,
     private readonly feedbackService: FeedbackService,
-    private readonly wishlistService: WishlistService
+    private readonly wishlistService: WishlistService,
+    private readonly cartService: CartService
   ) {}
 
   productId: string | null = '';
@@ -45,14 +47,16 @@ export class BookDetailComponent {
   feedback: string = '';
   star: string = '';
 
+  showQuantBtn = false;
+
   feedbackList: any[] = [];
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
-    console.log(this.productId);
 
     this.bookService.books$.subscribe({
       next: (res: any) => {
+        console.log(res);
         this.targetProduct = res;
         this.targetProduct = this.targetProduct.filter((item: any) => {
           const flag = item._id === this.productId;
@@ -62,7 +66,6 @@ export class BookDetailComponent {
           return flag;
         });
         console.log(this.targetProduct);
-        console.log(this.productId);
       },
       error: (err) => console.log(err),
     });
@@ -71,7 +74,6 @@ export class BookDetailComponent {
     this.feedbackService.feedbackList$.subscribe({
       next: (res: any) => {
         this.feedbackList = res.result;
-        console.log(this.feedbackList);
       },
       error: (err) => console.log(err),
     });
@@ -146,11 +148,58 @@ export class BookDetailComponent {
     this.fiveStar = false;
   }
 
-  onClickAddToCart(): void {}
+  onClickAddToCart() {
+    this.cartService.addToCart(this.productId).subscribe({
+      next: (res: any) => console.log(res),
+      error: (err) => console.log(err),
+    });
+    this.showQuantBtn = true;
+  }
+
   onClickAddToWishList(): void {
     this.wishlistService.postWishList(this.productId).subscribe({
       next: (res: any) => {},
       error: (err) => console.log(err),
     });
+  }
+
+  decreaseQuant(): void {
+    let freq = this.targetProduct[0].quantity;
+    freq = freq - 1;
+
+    if (freq >= 1) {
+      let data = {
+        quantityToBuy: freq,
+      };
+      this.cartService
+        .updateCartItemQuant(this.targetProduct[0]._id, data)
+        .subscribe({
+          next: () => {
+            this.targetProduct[0].quantity = freq;
+            this.cartService.getAllCartItems();
+          },
+          error: (err) => console.log(err),
+        });
+    } else alert('Quantity should be between 1 to 10');
+  }
+
+  increaseQuant(): void {
+    let freq = this.targetProduct[0].quantity;
+    freq = freq + 1;
+
+    if (freq <= 10) {
+      let data = {
+        quantityToBuy: freq,
+      };
+      this.cartService
+        .updateCartItemQuant(this.targetProduct[0]._id, data)
+        .subscribe({
+          next: () => {
+            this.targetProduct[0].quantity = freq;
+            this.cartService.getAllCartItems();
+          },
+          error: (err) => console.log(err),
+        });
+    } else alert('Quantity should be between 1 to 10');
   }
 }

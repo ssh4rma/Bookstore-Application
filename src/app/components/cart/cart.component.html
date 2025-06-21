@@ -1,0 +1,86 @@
+<div class="wrapper">
+  <div class="main-content">
+    <div class="navigation-btn">
+      <button (click)="onClickHomeBtn()" id="home-btn">Home /</button>
+      <button id="cart-btn">My Cart</button>
+    </div>
+    <div class="order-panel">
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="title"
+              >My Cart ({{ items.length }})</mat-panel-title
+            >
+            <mat-panel-title
+              ><select id="map">
+                <option>Use current location</option>
+              </select></mat-panel-title
+            >
+          </mat-expansion-panel-header>
+          <div class="cart-items" *ngFor="let item of items">
+            <tr>
+              <div class="list-wrapper">
+                <div class="list-image">
+                  <img
+                    class="book-image"
+                    src="../../../assets/book-cover.jpg"
+                    alt="book-cover"
+                  />
+                </div>
+                <div class="list-book-info">
+                  <div class="info">
+                    <div class="title">
+                      <span id="book-title">{{
+                        item.product_id.bookName
+                      }}</span>
+                    </div>
+                    <div class="author">
+                      <span id="book-author"
+                        >by {{ item.product_id.author }}</span
+                      >
+                    </div>
+                    <div class="price">
+                      <span id="disPrice"
+                        ><b>Rs.{{ item.product_id.discountPrice }}</b
+                        ><span id="actualPrice"
+                          >Rs.{{ item.product_id.price }}</span
+                        ></span
+                      >
+                    </div>
+                    <div class="buttons">
+                      <div class="quantity">
+                        <button
+                          (click)="decreaseQuant(item._id)"
+                          class="quant-btn"
+                        >
+                          -
+                        </button>
+                        <span id="item-quan">{{ item.quantityToBuy }}</span>
+                        <button
+                          (click)="increaseQuant(item._id)"
+                          class="quant-btn"
+                        >
+                          +
+                        </button>
+                      </div>
+                      <div class="remove-button">
+                        <button (click)="removeItem(item._id)" id="remove-btn">
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </tr>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+  <mat-toolbar class="footer">
+    <div class="footer-content">
+      <p>Copyright © 2025, Bookstore Private Limited. All Rights Reserved</p>
+    </div>
+  </mat-toolbar>
+</div>

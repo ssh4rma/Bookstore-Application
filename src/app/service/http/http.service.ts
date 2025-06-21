@@ -20,4 +20,12 @@ export class HttpService {
   postAPI(url: string, body: any, options: any = {}) {
     return this.http.post(url, body, options);
   }
+
+  deleteAPI(url: string, options: any = {}) {
+    return this.http.delete(url, options);
+  }
+
+  putAPI(url: string, body: any, options: any = {}) {
+    return this.http.put(url, body, options);
+  }
 }

@@ -14,14 +14,11 @@ export class BookService {
   constructor(private readonly http: HttpService) {}
 
   getBook() {
-    this.http.getHeader();
-    let token = this.http.token;
     let url = `https://bookstore.incubation.bridgelabz.com/bookstore_user/get/book`;
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: `Bearer ${token}`,
     });
 
     this.http.getAPI(url, { headers }).subscribe({

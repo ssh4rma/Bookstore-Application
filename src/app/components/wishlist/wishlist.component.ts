@@ -43,7 +43,6 @@ export class WishlistComponent {
     this.wishlistService.list$.subscribe({
       next: (res: any) => {
         this.wishlist = res;
-        console.log(this.wishlist);
       },
       error: (err) => console.log(err),
     });
@@ -58,5 +57,26 @@ export class WishlistComponent {
 
   onClickHome(): void {
     this.router.navigate(['']);
+  }
+
+  onDeleteItem(productId: any): void {
+    this.wishlistService.deleteWishListItem(productId).subscribe({
+      next: () => {
+        this.wishlistService.getWishlist().subscribe({
+          next: (res: any) => {
+            this.wishlistService.list$.next(res.result);
+          },
+          error: (err) => console.log(err),
+        });
+      },
+      error: (err) => console.log(err),
+    });
+
+    this.wishlistService.list$.subscribe({
+      next: (res: any) => {
+        this.wishlist = res;
+      },
+      error: (err) => console.log(err),
+    });
   }
 }

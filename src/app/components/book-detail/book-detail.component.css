@@ -222,3 +222,45 @@
   font-size: 23px;
   color: grey;
 }
+
+#add-to-cart-btn.disable {
+  visibility: hidden;
+}
+
+/* .quantity {
+  visibility: hidden;
+  position: absolute;
+} */
+
+.quantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  visibility: hidden;
+  position: absolute;
+  width: 50%;
+}
+
+.quant-btn {
+  background-color: #fafafa;
+  border: 1px solid #dbdbdb;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+.quantity.active {
+  visibility: visible;
+  position: relative;
+}
+
+#item-quan {
+  width: 40%;
+  max-height: 100%;
+  border: 1px solid #dbdbdb;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 14px;
+}

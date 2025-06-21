@@ -22,9 +22,20 @@
       <div class="main-image">
         <img class="main-img" src="{{ mainImgUrl }}" alt="book-cover" />
         <div class="bottom-btn">
-          <button (click)="onClickAddToCart()" id="add-to-cart-btn">
+          <button
+            *ngIf="!showQuantBtn"
+            (click)="onClickAddToCart()"
+            id="add-to-cart-btn"
+          >
             ADD TO BAG
           </button>
+
+          <div class="quantity" [ngClass]="{ active: showQuantBtn }">
+            <button (click)="decreaseQuant()" class="quant-btn">-</button>
+            <span id="item-quan">{{ targetProduct[0].quantity }}</span>
+            <button (click)="increaseQuant()" class="quant-btn">+</button>
+          </div>
+
           <button (click)="onClickAddToWishList()" id="wishlist-btn">
             ❤︎ WISHLIST
           </button>
