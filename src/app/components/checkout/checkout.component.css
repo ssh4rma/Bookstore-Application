@@ -1,0 +1,47 @@
+.wrapper {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.message {
+  text-align: center;
+}
+
+.message > p {
+  font-size: 16px;
+}
+
+table,
+th,
+tr,
+td {
+  border: solid #dcdcdc 2px;
+  border-collapse: collapse;
+  font: normal normal medium 12px/15px Roboto, sans-serif;
+}
+
+th {
+  background-color: #fafafa;
+}
+
+td {
+  width: 280px;
+  text-align: center;
+}
+
+#address {
+  text-align: left;
+}
+
+#continue-shopping-btn {
+  width: 200px;
+  height: 35px;
+  background: #3371b5;
+  border-radius: 3px;
+  border: none;
+  color: white;
+}

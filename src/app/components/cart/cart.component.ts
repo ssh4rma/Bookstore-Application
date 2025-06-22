@@ -266,4 +266,8 @@ export class CartComponent implements OnInit {
     let selectedAddress = this.selectedAddress;
     localStorage.setItem('selectedAddress', JSON.stringify(selectedAddress));
   }
+
+  onClickCheckout(): void {
+    this.router.navigate(['checkout']);
+  }
 }
