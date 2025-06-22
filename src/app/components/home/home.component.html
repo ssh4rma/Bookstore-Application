@@ -3,7 +3,9 @@
     <div class="toolbar-content">
       <div class="left">
         <img src="../../../assets/education.svg" alt="logo" />
-        <h2 id="label">Bookstore</h2>
+        <button (click)="onClickHomeButton()" id="bookstore-label">
+          Bookstore
+        </button>
       </div>
 
       <div class="center">
@@ -14,6 +16,7 @@
           matInput
           type="text"
           [(ngModel)]="value"
+          (input)="onSearchChange()"
         />
       </div>
 
@@ -27,9 +30,13 @@
               (menuOpened)="menuOpen = true"
               (menuClosed)="menuOpen = false"
             >
-              <mat-icon class="profile-icon">person</mat-icon>
-              <p id="guest-profile-label">Profile</p>
+              <mat-icon
+                class="profile-icon"
+                style="font-size: 21px; padding-bottom: 4px"
+                >person</mat-icon
+              >
             </button>
+            <p id="guest-profile-label">Profile</p>
             <button id="menu-white-bar" [ngClass]="{ show: menuOpen }"></button>
           </ng-container>
           <ng-container *ngIf="IsUserLoggedIn">
@@ -41,9 +48,13 @@
               (menuOpened)="menuOpen = true"
               (menuClosed)="menuOpen = false"
             >
-              <mat-icon class="profile-icon">person</mat-icon>
-              <span id="btn-name">{{ name }}</span>
+              <mat-icon
+                class="profile-icon"
+                style="font-size: 21px; padding-bottom: 4px"
+                >person</mat-icon
+              >
             </button>
+            <p id="user-profile-label">{{ name }}</p>
             <button id="menu-white-bar" [ngClass]="{ show: menuOpen }"></button>
           </ng-container>
         </div>
@@ -76,7 +87,7 @@
           yPosition="below"
           [overlapTrigger]="false"
         >
-          <div class="menu-content">
+          <div class="user-menu-content">
             <h2>Hello {{ name }}</h2>
 
             <div class="menu-bottom-btn">
@@ -111,7 +122,9 @@
         </mat-menu>
 
         <button (click)="onClickCart()" class="mat-btn" mat-button>
-          <mat-icon class="icon">shopping_cart</mat-icon>
+          <mat-icon style="font-size: 21px; padding-bottom: 3px" class="icon"
+            >shopping_cart</mat-icon
+          >
           <span id="cart-label">Cart</span>
         </button>
       </div>

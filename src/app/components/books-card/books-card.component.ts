@@ -5,6 +5,7 @@ import { BookService } from 'src/app/service/books/book.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { ToolbarDataService } from 'src/app/service/toolbar-data/toolbar-data.service';
 
 @Component({
   selector: 'app-books-card',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./books-card.component.css'],
 })
 export class BooksCardComponent {
+  allBooks: any[] = [];
   books: any[] = [];
   paginatedBooks: any[] = [];
   hoveredIndex = -1;
@@ -24,16 +26,25 @@ export class BooksCardComponent {
 
   constructor(
     private readonly bookService: BookService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly toolbarService: ToolbarDataService
   ) {}
 
   ngOnInit(): void {
     this.fetchBooks();
+
+    this.toolbarService.searchValue$.subscribe({
+      next: (value: string) => {
+        this.applySearchFilter(value);
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   fetchBooks(): void {
     this.bookService.books$.subscribe({
       next: (res) => {
+        this.allBooks = res;
         this.books = res;
         this.totalSize = res.length;
         this.updatePaginatedData();
@@ -42,6 +53,17 @@ export class BooksCardComponent {
     });
 
     this.bookService.getBook();
+  }
+
+  applySearchFilter(value: string): void {
+    const search = value.trim().toLowerCase();
+    this.books = this.allBooks.filter((book) => {
+      return book.bookName?.toLowerCase().includes(search);
+    });
+
+    this.totalSize = this.books.length;
+    this.currentPage = 0;
+    this.updatePaginatedData();
   }
 
   updatePaginatedData(): void {

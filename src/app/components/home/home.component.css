@@ -30,22 +30,18 @@
   flex-direction: row;
 }
 
-#label {
+#bookstore-label {
   margin-left: 10px;
   color: white;
+  font: normal normal normal 24px/26px Roboto, sans-serif;
   font-weight: 200;
-}
-
-.search-bar:focus {
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-  border: solid transparent 0.1px;
-  outline: none;
+  background-color: transparent;
+  border: none;
 }
 
 .search-bar {
   width: 490px;
-  height: 33px;
+  height: 37px;
   border: none;
   outline: none;
   padding: 0px 35px;
@@ -113,6 +109,12 @@
   padding: 0px 10px 5px 20px;
 }
 
+.user-menu-content {
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 0px 20px 5px 10px;
+}
+
 #menu-auth-btn {
   width: 127px;
   height: 33px;
@@ -144,6 +146,7 @@
   background-color: transparent;
   color: #878787;
   margin-left: 19px;
+  font-size: 15px;
 }
 
 .bottom-btn {
@@ -164,6 +167,11 @@
 
 #order-button {
   margin-left: 5px;
+  font-size: 15px;
+}
+
+.bottom-btn {
+  font-size: 15px;
 }
 
 .wishlist-btn {
@@ -173,7 +181,7 @@
 }
 
 #logout-btn {
-  margin-top: 5px;
+  margin-top: 10px;
   width: 123px;
   height: 33px;
   background-color: transparent;
@@ -191,18 +199,24 @@
 
 #guest-profile-label {
   position: absolute;
-  top: 2px;
-  right: 0.01px;
-  font-weight: 100;
+  top: 55%;
+  right: 14%;
   padding: 0px;
   color: white;
+  font-weight: 300;
+  font-size: 14px;
 }
 
-#btn-name {
-  color: white;
+#user-profile-label {
   position: absolute;
-  top: 2px;
-  right: 0.1px;
-  font-weight: 100;
+  top: 55%;
+  right: 14.3%;
   padding: 0px;
+  color: white;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.material-symbols-outlined {
+  font-size: 50px;
 }

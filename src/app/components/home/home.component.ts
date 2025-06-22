@@ -71,6 +71,10 @@ export class HomeComponent {
     });
   }
 
+  onSearchChange() {
+    this.toolbarData.setSearchValue(this.value);
+  }
+
   onProfileClick(): void {
     this.router.navigate(['profile'], { relativeTo: this.route });
   }
@@ -85,7 +89,6 @@ export class HomeComponent {
   onClickLogout(): void {
     this.toolbarData.loginState$.next(false);
     localStorage.removeItem('token');
-    localStorage.removeItem('name');
   }
 
   onClickWishlist(): void {
@@ -94,5 +97,9 @@ export class HomeComponent {
 
   onClickCart(): void {
     this.router.navigate(['cart']);
+  }
+
+  onClickHomeButton(): void {
+    this.router.navigate(['']);
   }
 }
