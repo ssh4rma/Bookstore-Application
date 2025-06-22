@@ -5,20 +5,325 @@
       <button id="cart-btn">My Cart</button>
     </div>
     <div class="order-panel">
+      <!-- main cart items -->
       <mat-accordion>
-        <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel [expanded]="!continueToAddress">
           <mat-expansion-panel-header>
-            <mat-panel-title class="title"
-              >My Cart ({{ items.length }})</mat-panel-title
-            >
-            <mat-panel-title
-              ><select id="map">
-                <option>Use current location</option>
-              </select></mat-panel-title
-            >
+            <mat-panel-title class="title">
+              My Cart ({{ items.length || 0 }})
+            </mat-panel-title>
+            <mat-panel-description>
+              <mat-option class="select-location" value="current-location">
+                <img
+                  src="../../../assets/location.png"
+                  style="width: 16px; vertical-align: middle; margin-right: 8px"
+                />
+                Use your current location
+              </mat-option>
+            </mat-panel-description>
           </mat-expansion-panel-header>
+
           <div class="cart-items" *ngFor="let item of items">
-            <tr>
+            <div class="list-wrapper">
+              <div class="list-image">
+                <img
+                  class="book-image"
+                  src="../../../assets/book-cover.jpg"
+                  alt="book-cover"
+                />
+              </div>
+              <div class="list-book-info">
+                <div class="info">
+                  <div class="title">
+                    <span id="book-title">{{
+                      item?.product_id?.bookName
+                    }}</span>
+                  </div>
+                  <div class="author">
+                    <span id="book-author"
+                      >by {{ item?.product_id?.author }}</span
+                    >
+                  </div>
+                  <div class="price">
+                    <span id="disPrice">
+                      <b>Rs.{{ item?.product_id?.discountPrice || 0 }}</b>
+                      <span id="actualPrice"
+                        >Rs.{{ item?.product_id?.price || 0 }}</span
+                      >
+                    </span>
+                  </div>
+                  <div class="buttons">
+                    <div class="quantity">
+                      <button
+                        (click)="decreaseQuant(item._id)"
+                        class="quant-btn"
+                        [disabled]="!item?._id"
+                      >
+                        -
+                      </button>
+                      <span id="item-quan">{{ item?.quantityToBuy || 0 }}</span>
+                      <button
+                        (click)="increaseQuant(item._id)"
+                        class="quant-btn"
+                        [disabled]="!item?._id"
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div class="remove-button">
+                      <button
+                        (click)="removeItem(item._id)"
+                        id="remove-btn"
+                        [disabled]="!item?._id"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button (click)="onClickPlaceOrder()" id="place-order-btn">
+            PLACE ORDER
+          </button>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <!-- customer details -->
+      <div class="accordion-wrapper">
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header class="customer-detail-header">
+              <mat-panel-title class="title">
+                {{
+                  !continueToAddress ? "Address Details" : "Customer Details"
+                }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <button
+              *ngIf="!showSelectedAddress"
+              (click)="onClickAddNewAddress()"
+              id="add-new-address-btn"
+            >
+              {{ isAddNewAddress ? "Cancel" : "Add New Address" }}
+            </button>
+
+            <!-- static form  -->
+            <div
+              *ngIf="!isAddNewAddress && !showSelectedAddress"
+              class="customer-details-wrapper"
+            >
+              <div class="user-info">
+                <div class="name-wrapper">
+                  <label>Full Name</label>
+                  <br />
+                  <input [(ngModel)]="name" class="input-fields" />
+                </div>
+                <div class="mobnumber-wrapper">
+                  <label>Mobile Number</label>
+                  <br />
+                  <input [(ngModel)]="mobnumber" class="input-fields" />
+                </div>
+              </div>
+
+              <div
+                class="address-wrapper"
+                *ngFor="let address of addressArray; let i = index"
+              >
+                <input
+                  (change)="onClickCheckBox(i)"
+                  id="address-checkbox-{{ i }}"
+                  type="radio"
+                  name="selectedAddress"
+                  [checked]="selectedAddressIndex === i"
+                />
+
+                <span id="address-no">{{ i + 1 }}. </span>
+                <span id="address-type">{{ address?.type }}</span>
+                <button
+                  (click)="onEditAddress(i)"
+                  id="edit-btn"
+                  [ngClass]="{ hideBtn: isEditClicked && editBtnIndex === i }"
+                >
+                  Edit
+                </button>
+                <button
+                  (click)="onClickSave(i)"
+                  id="save-btn"
+                  [ngClass]="{ showBtn: isEditClicked && saveBtnIndex === i }"
+                >
+                  Save
+                </button>
+
+                <!-- Address info -->
+                <div class="address-info-wrapper">
+                  <div class="address-txtarea-wrapper">
+                    <label>Address</label>
+                    <textarea
+                      [disabled]="!(isEditClicked && selectedIndex === i)"
+                      id="address-textarea"
+                      [(ngModel)]="address.address"
+                    ></textarea>
+                  </div>
+                  <div class="town-state">
+                    <div class="cityOrTown-wrapper">
+                      <label>City/Town</label>
+                      <input
+                        [disabled]="!(isEditClicked && selectedIndex === i)"
+                        matInput
+                        [(ngModel)]="address.cityOrTown"
+                      />
+                    </div>
+                    <div class="state-wrapper">
+                      <label>State</label>
+                      <input
+                        [disabled]="!(isEditClicked && selectedIndex === i)"
+                        matInput
+                        [(ngModel)]="address.state"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button id="place-order-btn" (click)="onClickContinue()">
+                CONTINUE
+              </button>
+            </div>
+
+            <!-- New address form -->
+            <div
+              *ngIf="isAddNewAddress && !showSelectedAddress"
+              class="editable-form"
+            >
+              <form [formGroup]="addressForm" (ngSubmit)="onSubmitNewAddress()">
+                <div class="name-and-num-wrapper">
+                  <div class="edit-name-wrapper">
+                    <label>Full Name</label>
+                    <br />
+                    <input class="input-fields" formControlName="fullName" />
+                  </div>
+                  <div class="edit-num-wrapper">
+                    <label>Mobile Number</label>
+                    <br />
+                    <input
+                      class="input-fields"
+                      formControlName="mobileNumber"
+                    />
+                  </div>
+                </div>
+
+                <!-- Address -->
+                <div class="edit-form-address">
+                  <label>Address</label>
+                  <textarea
+                    id="edit-form-address-textbar"
+                    formControlName="address"
+                  ></textarea>
+                </div>
+
+                <!-- City/Town and State -->
+                <div class="town-state">
+                  <div class="cityOrTown-wrapper">
+                    <label>City/Town</label>
+                    <input matInput formControlName="cityOrTown" />
+                  </div>
+                  <div class="state-wrapper">
+                    <label>State</label>
+                    <input matInput formControlName="state" />
+                  </div>
+                </div>
+
+                <!-- Type radio buttons -->
+                <div class="type">
+                  <label>Type</label>
+                  <mat-radio-group
+                    formControlName="type"
+                    style="display: flex; gap: 20px"
+                  >
+                    <mat-radio-button value="Home">Home</mat-radio-button>
+                    <mat-radio-button value="Work">Work</mat-radio-button>
+                    <mat-radio-button value="Others">Others</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+
+                <div style="margin-top: 20px; margin-left: 107%">
+                  <button
+                    type="submit"
+                    id="place-order-btn"
+                    [disabled]="addressForm.invalid"
+                  >
+                    Save Address
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- selected address -->
+            <div class="selectedAddress" *ngIf="showSelectedAddress">
+              <div class="user-info">
+                <div class="name-wrapper">
+                  <label>Full Name</label>
+                  <br />
+                  <input [(ngModel)]="name" class="input-fields" />
+                </div>
+                <div class="mobnumber-wrapper">
+                  <label>Mobile Number</label>
+                  <br />
+                  <input [(ngModel)]="mobnumber" class="input-fields" />
+                </div>
+              </div>
+
+              <div class="edit-form-address">
+                <label>Address</label>
+                <textarea
+                  id="edit-form-address-textbar"
+                  [value]="selectedAddress?.address"
+                ></textarea>
+              </div>
+
+              <!-- City/Town and State -->
+              <div class="town-state">
+                <div class="cityOrTown-wrapper">
+                  <label>City/Town</label>
+                  <input [value]="selectedAddress?.cityOrTown" matInput />
+                </div>
+                <div class="state-wrapper">
+                  <label>State</label>
+                  <input [value]="selectedAddress?.state" matInput />
+                </div>
+              </div>
+
+              <!-- Type radio buttons -->
+              <div class="type">
+                <label>Type</label>
+                <mat-radio-group
+                  formControlName="type"
+                  style="display: flex; gap: 20px"
+                  [value]="selectedAddress?.type"
+                >
+                  <mat-radio-button value="Home">Home</mat-radio-button>
+                  <mat-radio-button value="Work">Work</mat-radio-button>
+                  <mat-radio-button value="Others">Others</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <!-- order summary panel-->
+      <div class="accordion-wrapper">
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="title"> Order Summary </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="cart-items" *ngFor="let item of items">
               <div class="list-wrapper">
                 <div class="list-image">
                   <img
@@ -31,53 +336,34 @@
                   <div class="info">
                     <div class="title">
                       <span id="book-title">{{
-                        item.product_id.bookName
+                        item?.product_id?.bookName
                       }}</span>
                     </div>
                     <div class="author">
                       <span id="book-author"
-                        >by {{ item.product_id.author }}</span
+                        >by {{ item?.product_id?.author }}</span
                       >
                     </div>
                     <div class="price">
-                      <span id="disPrice"
-                        ><b>Rs.{{ item.product_id.discountPrice }}</b
-                        ><span id="actualPrice"
-                          >Rs.{{ item.product_id.price }}</span
-                        ></span
-                      >
-                    </div>
-                    <div class="buttons">
-                      <div class="quantity">
-                        <button
-                          (click)="decreaseQuant(item._id)"
-                          class="quant-btn"
+                      <span id="disPrice">
+                        <b>Rs.{{ item?.product_id?.discountPrice || 0 }}</b>
+                        <span id="actualPrice"
+                          >Rs.{{ item?.product_id?.price || 0 }}</span
                         >
-                          -
-                        </button>
-                        <span id="item-quan">{{ item.quantityToBuy }}</span>
-                        <button
-                          (click)="increaseQuant(item._id)"
-                          class="quant-btn"
-                        >
-                          +
-                        </button>
-                      </div>
-                      <div class="remove-button">
-                        <button (click)="removeItem(item._id)" id="remove-btn">
-                          Remove
-                        </button>
-                      </div>
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
-            </tr>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+            </div>
+
+            <button id="place-order-btn">CHECKOUT</button>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
     </div>
   </div>
+
   <mat-toolbar class="footer">
     <div class="footer-content">
       <p>Copyright © 2025, Bookstore Private Limited. All Rights Reserved</p>

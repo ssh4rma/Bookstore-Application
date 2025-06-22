@@ -244,7 +244,6 @@ tr {
   font: normal normal normal 14px/16px Roboto, sans-serif;
   height: 80px;
   margin-bottom: 20px;
-  resize: none;
 }
 
 .town-state {
@@ -287,6 +286,7 @@ tr {
 }
 
 .editable-form {
+  border: solid red 2px;
   width: 75%;
 }
 
@@ -338,28 +338,4 @@ tr {
 #save-btn.showBtn {
   visibility: visible;
   position: relative;
-}
-
-.accordion-wrapper {
-  margin-top: 40px;
-}
-
-.selectedAddress {
-  width: 75%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.user.info {
-  display: flex;
-  flex-direction: column;
-}
-
-#edit-form-address-textbar {
-  resize: none;
-  border: 1px solid #dcdcdc;
-  border-radius: 2px;
-  font: normal normal normal 14px/16px Roboto, sans-serif;
-  height: 80px;
 }
