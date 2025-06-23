@@ -144,3 +144,32 @@ tr {
   border: none;
   background-color: #26a541;
 }
+
+@media (max-width: 380px) {
+  .navigation-panel {
+    visibility: hidden;
+  }
+
+  .wrapper {
+    margin-top: 40px;
+  }
+
+  .wishlist-wrapper {
+    margin: 0px;
+    margin-left: 5px;
+  }
+
+  .wishlist-table {
+    width: 340px;
+    height: auto;
+  }
+
+  .list-book-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+  }
+}

@@ -51,7 +51,6 @@ export class LoginSignupComponent {
 
   data = inject(MAT_DIALOG_DATA);
 
-  //reactive form for login and signup page
   constructor(
     private readonly fb: FormBuilder,
     private readonly loginService: LoginService,

@@ -8,6 +8,8 @@
 .main-content {
   flex: 1;
   margin-left: 130px;
+  width: 86%;
+  margin-inline: auto;
 }
 
 .footer {
@@ -43,6 +45,7 @@
 
 .order-panel {
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .title {

@@ -7,7 +7,7 @@
     <div class="order-panel">
       <!-- main cart items -->
       <mat-accordion>
-        <mat-expansion-panel [expanded]="!continueToAddress">
+        <mat-expansion-panel [expanded]="defaultPanel">
           <mat-expansion-panel-header>
             <mat-panel-title class="title">
               My Cart ({{ items.length || 0 }})
@@ -55,6 +55,7 @@
                   <div class="buttons">
                     <div class="quantity">
                       <button
+                        style="cursor: pointer"
                         (click)="decreaseQuant(item._id)"
                         class="quant-btn"
                         [disabled]="!item?._id"
@@ -63,6 +64,7 @@
                       </button>
                       <span id="item-quan">{{ item?.quantityToBuy || 0 }}</span>
                       <button
+                        style="cursor: pointer"
                         (click)="increaseQuant(item._id)"
                         class="quant-btn"
                         [disabled]="!item?._id"
@@ -72,6 +74,7 @@
                     </div>
                     <div class="remove-button">
                       <button
+                        style="cursor: pointer"
                         (click)="removeItem(item._id)"
                         id="remove-btn"
                         [disabled]="!item?._id"
@@ -85,7 +88,11 @@
             </div>
           </div>
 
-          <button (click)="onClickPlaceOrder()" id="place-order-btn">
+          <button
+            style="cursor: pointer"
+            (click)="onClickPlaceOrder()"
+            id="place-order-btn"
+          >
             PLACE ORDER
           </button>
         </mat-expansion-panel>
@@ -94,7 +101,7 @@
       <!-- customer details -->
       <div class="accordion-wrapper">
         <mat-accordion>
-          <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel [expanded]="continueToAddress">
             <mat-expansion-panel-header class="customer-detail-header">
               <mat-panel-title class="title">
                 {{
@@ -104,6 +111,7 @@
             </mat-expansion-panel-header>
 
             <button
+              style="cursor: pointer"
               *ngIf="!showSelectedAddress"
               (click)="onClickAddNewAddress()"
               id="add-new-address-btn"
@@ -144,6 +152,7 @@
                 <span id="address-no">{{ i + 1 }}. </span>
                 <span id="address-type">{{ address?.type }}</span>
                 <button
+                  style="cursor: pointer"
                   (click)="onEditAddress(i)"
                   id="edit-btn"
                   [ngClass]="{ hideBtn: isEditClicked && editBtnIndex === i }"
@@ -151,6 +160,7 @@
                   Edit
                 </button>
                 <button
+                  style="cursor: pointer"
                   (click)="onClickSave(i)"
                   id="save-btn"
                   [ngClass]="{ showBtn: isEditClicked && saveBtnIndex === i }"
@@ -189,7 +199,11 @@
                 </div>
               </div>
 
-              <button id="place-order-btn" (click)="onClickContinue()">
+              <button
+                style="cursor: pointer"
+                id="place-order-btn"
+                (click)="onClickContinue()"
+              >
                 CONTINUE
               </button>
             </div>
@@ -252,6 +266,7 @@
 
                 <div style="margin-top: 20px; margin-left: 107%">
                   <button
+                    style="cursor: pointer"
                     type="submit"
                     id="place-order-btn"
                     [disabled]="addressForm.invalid"
@@ -318,7 +333,7 @@
       <!-- order summary panel-->
       <div class="accordion-wrapper">
         <mat-accordion>
-          <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel [expanded]="continueToOrderSummary">
             <mat-expansion-panel-header>
               <mat-panel-title class="title"> Order Summary </mat-panel-title>
             </mat-expansion-panel-header>
@@ -357,7 +372,11 @@
               </div>
             </div>
 
-            <button (click)="onClickCheckout()" id="place-order-btn">
+            <button
+              style="cursor: pointer"
+              (click)="onClickCheckout()"
+              id="place-order-btn"
+            >
               CHECKOUT
             </button>
           </mat-expansion-panel>

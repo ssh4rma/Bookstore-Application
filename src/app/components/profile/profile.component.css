@@ -1,5 +1,7 @@
 .wrapper {
-  margin: 90px 100px 0px 100px;
+  width: 85%;
+  margin-top: 90px;
+  margin-inline: auto;
 }
 
 #profile-btn {
@@ -17,7 +19,6 @@
 
 .personal-details {
   margin-top: 30px;
-  margin-left: 60px;
 }
 
 #label {
@@ -169,4 +170,72 @@ label {
   align-items: center;
   margin-inline: auto;
   width: 90%;
+}
+#edit-btn {
+  visibility: hidden;
+}
+
+@media (max-width: 380px) {
+  .nav-btn {
+    visibility: hidden;
+  }
+
+  .wrapper {
+    margin-block: 40px;
+    margin-inline: 0px;
+  }
+
+  .personal-details {
+    margin-left: 20px;
+    width: 340px;
+    border: solid 2px red;
+  }
+
+  .user-info-form {
+    width: 340px;
+  }
+
+  .address-details {
+    width: 340px;
+  }
+
+  .address-topbar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .address-input-form {
+    width: 340px;
+  }
+
+  .list-of-address {
+    width: 340px;
+  }
+
+  .town-state {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .footer {
+    visibility: hidden;
+  }
+
+  #label {
+    font-size: 25px;
+  }
+
+  #add-address {
+    font-size: 12px;
+  }
+
+  .personal-details-heading {
+    margin-left: 20%;
+  }
+
+  #edit-btn {
+    visibility: hidden;
+  }
 }

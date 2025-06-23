@@ -3,7 +3,11 @@
     <div class="toolbar-content">
       <div class="left">
         <img src="../../../assets/education.svg" alt="logo" />
-        <button (click)="onClickHomeButton()" id="bookstore-label">
+        <button
+          style="cursor: pointer"
+          (click)="onClickHomeButton()"
+          id="bookstore-label"
+        >
           Bookstore
         </button>
       </div>
@@ -24,6 +28,7 @@
         <div class="profile-wrapper">
           <ng-container *ngIf="!IsUserLoggedIn">
             <button
+              style="cursor: pointer"
               class="mat-btn"
               mat-button
               [matMenuTriggerFor]="Guest"
@@ -41,6 +46,7 @@
           </ng-container>
           <ng-container *ngIf="IsUserLoggedIn">
             <button
+              style="cursor: pointer"
               id="profile-btn-w-login"
               mat-button
               [matMenuTriggerFor]="UserProfile"
@@ -62,7 +68,12 @@
           <div class="menu-content">
             <h2>Welcome</h2>
             <p>To access account and manage orders</p>
-            <button matButton (click)="openDialog()" id="menu-auth-btn">
+            <button
+              style="cursor: pointer"
+              matButton
+              (click)="openDialog()"
+              id="menu-auth-btn"
+            >
               LOGIN/SIGNUP
             </button>
             <mat-divider></mat-divider>
@@ -73,11 +84,19 @@
                   src="../../../assets/orders.png"
                   alt="cart"
                 />
-                <button class="bottom-btn" id="order-button">My orders</button>
+                <button
+                  style="cursor: pointer"
+                  class="bottom-btn"
+                  id="order-button"
+                >
+                  My orders
+                </button>
               </div>
               <div class="wishlist-btn">
                 <img src="../../../assets/favorite.png" alt="fav" />
-                <button class="bottom-btn">Wishlist</button>
+                <button style="cursor: pointer" class="bottom-btn">
+                  Wishlist
+                </button>
               </div>
             </div>
           </div>
@@ -97,7 +116,11 @@
                   alt="profile"
                   id="profile-img"
                 />
-                <button (click)="onProfileClick()" id="profile-btn">
+                <button
+                  style="cursor: pointer"
+                  (click)="onProfileClick()"
+                  id="profile-btn"
+                >
                   Profile
                 </button>
               </div>
@@ -108,6 +131,7 @@
                   alt="cart"
                 />
                 <button
+                  style="cursor: pointer"
                   (click)="onClickMyOrders()"
                   class="bottom-btn"
                   id="order-button"
@@ -117,12 +141,22 @@
               </div>
               <div class="wishlist-btn">
                 <img src="../../../assets/favorite.png" alt="fav" />
-                <button (click)="onClickWishlist()" class="bottom-btn">
+                <button
+                  style="cursor: pointer"
+                  (click)="onClickWishlist()"
+                  class="bottom-btn"
+                >
                   Wishlist
                 </button>
               </div>
 
-              <button id="logout-btn" (click)="onClickLogout()">LOGOUT</button>
+              <button
+                style="cursor: pointer"
+                id="logout-btn"
+                (click)="onClickLogout()"
+              >
+                LOGOUT
+              </button>
             </div>
           </div>
         </mat-menu>

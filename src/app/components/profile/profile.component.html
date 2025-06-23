@@ -1,11 +1,11 @@
 <div class="wrapper">
-  <div>
+  <div class="nav-btn">
     <button id="home-btn" (click)="onClickHome()">Home /</button>
     <button id="profile-btn">Profile</button>
   </div>
 
   <div class="personal-details">
-    <span id="label">Personal Details</span>
+    <span class="personal-details-heading" id="label">Personal Details</span>
     <button id="edit-btn">Edit</button>
 
     <div class="user-info-form">
@@ -78,12 +78,12 @@
           </mat-form-field>
 
           <label>City/Town</label>
-          <mat-form-field style="width: 100%">
+          <mat-form-field appearance="outline" style="width: 100%">
             <input matInput formControlName="cityOrTown" />
           </mat-form-field>
 
           <label>State</label>
-          <mat-form-field style="width: 100%">
+          <mat-form-field appearance="outline" style="width: 100%">
             <input matInput formControlName="state" />
           </mat-form-field>
 
@@ -130,13 +130,13 @@
             <div class="town-state">
               <div>
                 <label>City/Town</label>
-                <mat-form-field style="width: 100%">
+                <mat-form-field appearance="outline" style="width: 100%">
                   <input matInput [value]="address.cityOrTown" disabled />
                 </mat-form-field>
               </div>
               <div>
                 <label>State</label>
-                <mat-form-field style="width: 100%">
+                <mat-form-field appearance="outline" style="width: 100%">
                   <input matInput [value]="address.state" disabled />
                 </mat-form-field>
               </div>
@@ -175,13 +175,13 @@
             <div class="town-state">
               <div>
                 <label>City/Town</label>
-                <mat-form-field style="width: 100%">
+                <mat-form-field appearance="outline" style="width: 100%">
                   <input matInput formControlName="cityOrTown" />
                 </mat-form-field>
               </div>
               <div>
                 <label>State</label>
-                <mat-form-field style="width: 100%">
+                <mat-form-field appearance="outline" style="width: 100%">
                   <input matInput formControlName="state" />
                 </mat-form-field>
               </div>

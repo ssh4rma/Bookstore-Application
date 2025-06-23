@@ -50,10 +50,9 @@ export class CartComponent implements OnInit {
 
   isCartOpen = true;
   items: any[] = [];
-  continueToAddress = false;
   dialog = inject(MatDialog);
   clickedIndex: null | number = null;
-
+  
   name = '';
   mobnumber = '';
   addressArray: any[] = [];
@@ -63,6 +62,8 @@ export class CartComponent implements OnInit {
   selectedIndex = -1;
   saveBtnIndex = -1;
   editBtnIndex = -1;
+
+  continueToAddress = false;
   continueToOrderSummary = false;
   defaultPanel = true;
 
@@ -262,7 +263,7 @@ export class CartComponent implements OnInit {
       return;
     }
     this.showSelectedAddress = true;
-
+    this.continueToOrderSummary = true;
     let selectedAddress = this.selectedAddress;
     localStorage.setItem('selectedAddress', JSON.stringify(selectedAddress));
   }

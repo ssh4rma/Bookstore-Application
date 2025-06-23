@@ -79,10 +79,14 @@
             Enter the password
           </mat-error>
         </mat-form-field>
-        <button id="forgot-pass-btn">Forgot Password?</button>
+        <button style="cursor: pointer" id="forgot-pass-btn">
+          Forgot Password?
+        </button>
       </div>
 
-      <button id="login-btn" type="submit">Login</button>
+      <button style="cursor: pointer" id="login-btn" type="submit">
+        Login
+      </button>
 
       <div class="or-wrapper">
         <button class="or-btn"></button>
@@ -91,8 +95,8 @@
       </div>
 
       <div class="end-btn">
-        <button id="fb">Facebook</button>
-        <button id="google">Google</button>
+        <button style="cursor: pointer" id="fb">Facebook</button>
+        <button style="cursor: pointer" id="google">Google</button>
       </div>
     </form>
 
@@ -128,6 +132,7 @@
           formControlName="password"
         />
         <button
+          style="cursor: pointer"
           mat-icon-button
           matSuffix
           (click)="hide = !hide"
@@ -155,7 +160,9 @@
         </mat-error>
       </mat-form-field>
 
-      <button id="signup-btn" type="submit">Signup</button>
+      <button style="cursor: pointer" id="signup-btn" type="submit">
+        Signup
+      </button>
     </form>
   </mat-card>
 </div>

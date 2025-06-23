@@ -32,9 +32,21 @@
           </button>
 
           <div class="quantity" [ngClass]="{ active: showQuantBtn }">
-            <button (click)="decreaseQuant()" class="quant-btn">-</button>
+            <button
+              style="cursor: pointer"
+              (click)="decreaseQuant()"
+              class="quant-btn"
+            >
+              -
+            </button>
             <span id="item-quan">{{ targetProduct[0].quantity }}</span>
-            <button (click)="increaseQuant()" class="quant-btn">+</button>
+            <button
+              style="cursor: pointer"
+              (click)="increaseQuant()"
+              class="quant-btn"
+            >
+              +
+            </button>
           </div>
 
           <button
@@ -87,18 +99,18 @@
         <div class="feedback-input-wrapper">
           <h2>Overall Rating</h2>
           <div class="rating">
-            <button (click)="onClickOneStar()">
+            <button style="cursor: pointer" (click)="onClickOneStar()">
               <mat-icon [ngClass]="{ 'material-symbols-outlined': oneStar }"
                 >star_outline</mat-icon
               >
             </button>
-            <button (click)="onClickTwoStar()">
+            <button style="cursor: pointer" (click)="onClickTwoStar()">
               <mat-icon
                 [ngClass]="{ 'material-symbols-outlined': oneStar && twoStar }"
                 >star_outline</mat-icon
               >
             </button>
-            <button (click)="onClickThreeStar()">
+            <button style="cursor: pointer" (click)="onClickThreeStar()">
               <mat-icon
                 [ngClass]="{
                   'material-symbols-outlined': oneStar && twoStar && threeStar
@@ -106,7 +118,7 @@
                 >star_outline</mat-icon
               >
             </button>
-            <button (click)="onClickFourStar()">
+            <button style="cursor: pointer" (click)="onClickFourStar()">
               <mat-icon
                 [ngClass]="{
                   'material-symbols-outlined':
@@ -115,7 +127,7 @@
                 >star_outline</mat-icon
               >
             </button>
-            <button (click)="onClickFiveStar()">
+            <button style="cursor: pointer" (click)="onClickFiveStar()">
               <mat-icon
                 [ngClass]="{
                   'material-symbols-outlined':
