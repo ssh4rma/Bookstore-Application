@@ -107,7 +107,13 @@
                   src="../../../assets/orders.png"
                   alt="cart"
                 />
-                <button class="bottom-btn" id="order-button">My orders</button>
+                <button
+                  (click)="onClickMyOrders()"
+                  class="bottom-btn"
+                  id="order-button"
+                >
+                  My orders
+                </button>
               </div>
               <div class="wishlist-btn">
                 <img src="../../../assets/favorite.png" alt="fav" />

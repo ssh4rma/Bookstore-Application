@@ -102,4 +102,8 @@ export class HomeComponent {
   onClickHomeButton(): void {
     this.router.navigate(['']);
   }
+
+  onClickMyOrders(): void {
+    this.router.navigate(['my-orders']);
+  }
 }
