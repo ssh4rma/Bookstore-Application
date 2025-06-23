@@ -15,7 +15,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 40px 170px 40px 170px;
+  width: 85%;
+  margin-block: 40px;
+  margin-inline: auto;
 }
 
 .left-stats {
@@ -33,6 +35,10 @@
   color: gray;
   font-size: large;
   margin-left: 10px;
+}
+
+.sortby {
+  margin-right: 20px;
 }
 
 #sort-option {
@@ -63,8 +69,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 50px;
-  margin-left: 170px;
-  margin-right: 170px;
+  width: 85%;
+  margin-inline: auto;
 }
 
 .card-content {
@@ -176,4 +182,19 @@ mat-card-content {
 #quick-view.active {
   visibility: visible;
   position: absolute;
+}
+
+@media (max-width: 380px) {
+  #title {
+    font-size: 25px;
+  }
+  #totalQuantity {
+    font-size: 15px;
+  }
+  #sort-option {
+    visibility: hidden;
+  }
+  .footer {
+    visibility: hidden;
+  }
 }

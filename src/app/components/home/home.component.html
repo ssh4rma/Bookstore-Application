@@ -12,7 +12,7 @@
         <mat-icon id="search-glass-icon">search</mat-icon>
         <input
           class="search-bar"
-          placeholder="Search"
+          placeholder="Search..."
           matInput
           type="text"
           [(ngModel)]="value"
@@ -41,8 +41,7 @@
           </ng-container>
           <ng-container *ngIf="IsUserLoggedIn">
             <button
-              id="profile-btn-wo-login"
-              class="mat-btn"
+              id="profile-btn-w-login"
               mat-button
               [matMenuTriggerFor]="UserProfile"
               (menuOpened)="menuOpen = true"
@@ -54,6 +53,7 @@
                 >person</mat-icon
               >
             </button>
+            <!-- user profile name -->
             <p id="user-profile-label">{{ name }}</p>
             <button id="menu-white-bar" [ngClass]="{ show: menuOpen }"></button>
           </ng-container>

@@ -26,6 +26,7 @@
             *ngIf="!showQuantBtn"
             (click)="onClickAddToCart()"
             id="add-to-cart-btn"
+            style="cursor: pointer"
           >
             ADD TO BAG
           </button>
@@ -36,7 +37,11 @@
             <button (click)="increaseQuant()" class="quant-btn">+</button>
           </div>
 
-          <button (click)="onClickAddToWishList()" id="wishlist-btn">
+          <button
+            style="cursor: pointer"
+            (click)="onClickAddToWishList()"
+            id="wishlist-btn"
+          >
             ❤︎ WISHLIST
           </button>
         </div>
@@ -65,7 +70,7 @@
 
       <div class="book-descrip">
         <h2>• Book Detail</h2>
-        <p>
+        <p style="text-align: justify">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque
           quaerat ipsa nihil voluptatibus quia in, odio eos? Ullam maxime at
           nam. Maxime et laboriosam provident eaque commodi velit nobis,
@@ -132,7 +137,9 @@
             [(ngModel)]="feedback"
           ></textarea>
 
-          <button (click)="onClickSubmit()">Submit</button>
+          <button style="cursor: pointer" (click)="onClickSubmit()">
+            Submit
+          </button>
         </div>
       </div>
 

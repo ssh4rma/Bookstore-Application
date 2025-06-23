@@ -73,7 +73,7 @@ export class BookDetailComponent {
     this.feedbackService.getFeedback(this.productId);
     this.feedbackService.feedbackList$.subscribe({
       next: (res: any) => {
-        this.feedbackList = res.result;
+        this.feedbackList = res.result.slice().reverse();
       },
       error: (err) => console.log(err),
     });
@@ -138,7 +138,12 @@ export class BookDetailComponent {
       comment: this.feedback,
       rating: this.star,
     };
-    this.feedbackService.postFeedback(data, this.productId).subscribe();
+    this.feedbackService.postFeedback(data, this.productId).subscribe({
+      next: (res: any) => {
+        this.feedbackService.getFeedback(this.productId);
+      },
+      error: (err) => console.log(err),
+    });
 
     this.feedback = '';
     this.oneStar = false;

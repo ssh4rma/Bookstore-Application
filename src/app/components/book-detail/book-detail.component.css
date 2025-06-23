@@ -1,6 +1,7 @@
 .wrapper {
   margin-top: 100px;
-  margin-left: 147px;
+  width: 86%;
+  margin-inline: auto;
 }
 
 #home-nav-btn {
@@ -87,7 +88,30 @@
   .book-details-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 100px;
+  }
+}
+
+@media (max-width: 390px) {
+  .side-image {
+    visibility: hidden;
+  }
+  .book-image {
+    width: 300px;
+  }
+  .main-img {
+    width: 200px;
+    height: auto;
+  }
+  .book-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .book-details {
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -155,6 +179,7 @@
 }
 
 .feedback-wrapper {
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -184,7 +209,6 @@
   width: 100px;
   height: 35px;
   font-size: 18px;
-  margin-left: 88%;
   background-color: #3371b5;
   border: none;
   outline: none;
