@@ -246,6 +246,7 @@
   }
 
   .search-bar {
+    visibility: hidden;
     width: 70px;
     padding-right: 10px;
     padding-left: 3px;

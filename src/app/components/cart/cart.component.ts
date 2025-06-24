@@ -280,6 +280,23 @@ export class CartComponent implements OnInit {
   }
 
   onClickCheckout(): void {
+    let orderId: any[] = [];
+    for (let item of this.items) {
+      let product_id = item.product_id._id;
+      orderId.push(product_id);
+      this.cartService.deleteCartItem(item._id).subscribe({
+        next: () => {
+          this.cartService.getAllCartItems();
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
+    }
+
+    localStorage.setItem('my-orders', JSON.stringify(orderId));
+    // console.log(JSON.stringify(orderId));
+
     this.router.navigate(['checkout']);
   }
 }

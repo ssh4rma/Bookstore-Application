@@ -96,13 +96,14 @@ export class BookDetailComponent {
 
     this.wishlistService.list$.subscribe({
       next: (res: any) => {
-        console.log('this is response of wishlist', res);
+        this.productIsInWishList = false;
 
         for (let i = 0; i < res.length; ++i) {
-          if (res[i].product_id._id === this.productId)
+          if (res[i].product_id._id === this.productId) {
             this.productIsInWishList = true;
+            break;
+          }
         }
-        console.log(this.productIsInWishList);
       },
       error: (err) => console.log(err),
     });
@@ -206,12 +207,25 @@ export class BookDetailComponent {
   }
 
   isItemWishlisted = false;
+
   onClickAddToWishList(): void {
-    this.isItemWishlisted = true;
-    this.wishlistService.postWishList(this.productId).subscribe({
-      next: (res: any) => {},
-      error: (err) => console.log(err),
-    });
+    this.isItemWishlisted = !this.isItemWishlisted;
+
+    if (this.isItemWishlisted) {
+      this.wishlistService.postWishList(this.productId).subscribe({
+        next: (res: any) => {
+          this.loadWishListItems();
+        },
+        error: (err) => console.log(err),
+      });
+    } else {
+      this.wishlistService.deleteWishListItem(this.productId).subscribe({
+        next: (res: any) => {
+          this.loadWishListItems();
+        },
+        error: (err) => console.log(err),
+      });
+    }
   }
 
   decreaseQuant(): void {

@@ -7,7 +7,7 @@
 
     <div class="list">
       <table class="wishlist-table">
-        <tr>
+        <tr *ngFor="let book of myOrdersBooks">
           <div class="list-wrapper">
             <div class="list-image">
               <img
@@ -19,44 +19,15 @@
             <div class="list-book-info">
               <div class="info">
                 <div class="title">
-                  <span id="book-title">Moonlight</span>
+                  <span id="book-title">{{ book.bookName }}</span>
                 </div>
                 <div class="author">
-                  <span id="book-author">by asdwrf</span>
+                  <span id="book-author">{{ book.author }}</span>
                 </div>
                 <div class="price">
                   <span id="disPrice"
-                    ><b>Rs.120</b><span id="actualPrice">Rs.150</span></span
-                  >
-                </div>
-              </div>
-              <div class="order-place-date">
-                <button class="green-dot"></button>
-                <span><b>Order Placed on May 21</b></span>
-              </div>
-            </div>
-          </div>
-        </tr>
-        <tr>
-          <div class="list-wrapper">
-            <div class="list-image">
-              <img
-                class="book-image"
-                src="../../../assets/book-cover.jpg"
-                alt="book-cover"
-              />
-            </div>
-            <div class="list-book-info">
-              <div class="info">
-                <div class="title">
-                  <span id="book-title">Physics</span>
-                </div>
-                <div class="author">
-                  <span id="book-author">newton</span>
-                </div>
-                <div class="price">
-                  <span id="disPrice"
-                    ><b>Rs.120</b><span id="actualPrice">Rs.150</span></span
+                    ><b>Rs. {{ book.discountPrice }}</b
+                    ><span id="actualPrice">Rs. {{ book.price }}</span></span
                   >
                 </div>
               </div>
