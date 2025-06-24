@@ -162,7 +162,10 @@
         </mat-menu>
 
         <button (click)="onClickCart()" class="mat-btn" mat-button>
-          <mat-icon style="font-size: 21px; padding-bottom: 3px" class="icon"
+          <mat-icon
+            matBadge="{{ cartSize }}"
+            style="font-size: 21px; padding-bottom: 3px"
+            class="icon"
             >shopping_cart</mat-icon
           >
           <span id="cart-label">Cart</span>

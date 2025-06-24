@@ -51,6 +51,7 @@ export class BookDetailComponent {
 
   feedbackList: any[] = [];
   cartItems: any[] = [];
+  productIsInWishList = false;
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
@@ -80,6 +81,31 @@ export class BookDetailComponent {
     });
 
     this.loadCartItems();
+    this.loadWishListItems();
+  }
+
+  loadWishListItems(): void {
+    this.wishlistService.getWishlist().subscribe({
+      next: (res: any) => {
+        this.wishlistService.list$.next(res.result);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
+    this.wishlistService.list$.subscribe({
+      next: (res: any) => {
+        console.log('this is response of wishlist', res);
+
+        for (let i = 0; i < res.length; ++i) {
+          if (res[i].product_id._id === this.productId)
+            this.productIsInWishList = true;
+        }
+        console.log(this.productIsInWishList);
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   loadCartItems(): void {

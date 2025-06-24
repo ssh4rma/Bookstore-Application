@@ -15,6 +15,8 @@ import { BookService } from 'src/app/service/books/book.service';
 import { MatCardModule } from '@angular/material/card';
 import { ToolbarDataService } from 'src/app/service/toolbar-data/toolbar-data.service';
 import { DialogRef } from '@angular/cdk/dialog';
+import { CartService } from 'src/app/service/cart/cart.service';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +34,7 @@ import { DialogRef } from '@angular/cdk/dialog';
     MatDialogModule,
     MatPaginatorModule,
     MatCardModule,
+    MatBadgeModule,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
@@ -42,12 +45,15 @@ export class HomeComponent {
   IsUserLoggedIn = false;
   name = localStorage.getItem('name');
   dialog = inject(MatDialog);
+  cartItems: any[] = [];
+  cartSize = 0;
 
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
     private readonly bookService: BookService,
-    private readonly toolbarData: ToolbarDataService
+    private readonly toolbarData: ToolbarDataService,
+    private readonly cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +74,22 @@ export class HomeComponent {
         }
       },
       error: (err) => console.log(err),
+    });
+
+    this.loadCartItems();
+  }
+
+  loadCartItems(): void {
+    this.cartService.getAllCartItems();
+    this.cartService.cartList$.subscribe({
+      next: (res: any) => {
+        this.cartItems = res.result;
+        this.cartSize = this.cartItems.length;
+        console.log(this.cartSize);
+      },
+      error: (err) => {
+        console.error(err);
+      },
     });
   }
 

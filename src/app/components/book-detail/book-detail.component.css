@@ -70,7 +70,7 @@
   border: none;
 }
 
-#wishlist-btn {
+.wishlist-btn {
   width: 50%;
   height: 50px;
   background-color: #333232;
@@ -287,4 +287,9 @@
   font-size: 30px;
   text-align: center;
   padding-top: 14px;
+}
+
+.wishlist-btn.changeColor {
+  background-color: #a03037;
+  color: white;
 }

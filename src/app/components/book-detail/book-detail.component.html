@@ -54,9 +54,10 @@
           <button
             style="cursor: pointer"
             (click)="onClickAddToWishList()"
-            id="wishlist-btn"
+            class="wishlist-btn"
+            [ngClass]="{ changeColor: productIsInWishList }"
           >
-            ❤︎ {{ isItemWishlisted ? "WISHLISTED" : "WISHLIST" }}
+            ❤︎ WISHLIST
           </button>
         </div>
       </div>
