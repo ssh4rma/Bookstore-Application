@@ -411,3 +411,21 @@ tr {
   flex-direction: column;
   gap: 10px;
 }
+
+#place-order-btn.disableBtn {
+  visibility: hidden;
+}
+
+#continue-to-order-sum-btn {
+  background-color: #3371b5;
+  width: 151px;
+  height: 35px;
+  margin-left: 80%;
+  border: none;
+  color: white;
+  border-radius: 4px;
+}
+
+#continue-to-order-sum-btn.disableBtn {
+  visibility: hidden;
+}

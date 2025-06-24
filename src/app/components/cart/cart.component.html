@@ -92,6 +92,7 @@
             style="cursor: pointer"
             (click)="onClickPlaceOrder()"
             id="place-order-btn"
+            [ngClass]="{ disableBtn: continueToAddress }"
           >
             PLACE ORDER
           </button>
@@ -201,8 +202,9 @@
 
               <button
                 style="cursor: pointer"
-                id="place-order-btn"
+                id="continue-to-order-sum-btn"
                 (click)="onClickContinue()"
+                [ngClass]="{ disableBtn: continueToOrderSummary }"
               >
                 CONTINUE
               </button>
