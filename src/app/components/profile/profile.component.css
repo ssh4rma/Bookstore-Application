@@ -185,7 +185,6 @@ label {
   .personal-details {
     margin-left: 20px;
     width: 340px;
-    border: solid 2px red;
   }
 
   .user-info-form {
@@ -235,4 +234,8 @@ label {
   #edit-btn {
     visibility: hidden;
   }
+}
+
+#edit-btn-for-personal-detail {
+  visibility: hidden;
 }
