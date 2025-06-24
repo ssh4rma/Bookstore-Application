@@ -200,7 +200,9 @@ export class BookDetailComponent {
 
   onClickAddToCart() {
     this.cartService.addToCart(this.productId).subscribe({
-      next: (res: any) => console.log(res),
+      next: (res: any) => {
+        this.loadCartItems();
+      },
       error: (err) => console.log(err),
     });
     this.showQuantBtn = true;

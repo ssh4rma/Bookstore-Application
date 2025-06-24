@@ -8,7 +8,7 @@ describe('WishlistComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [WishlistComponent]
+      imports: [WishlistComponent],
     });
     fixture = TestBed.createComponent(WishlistComponent);
     component = fixture.componentInstance;
