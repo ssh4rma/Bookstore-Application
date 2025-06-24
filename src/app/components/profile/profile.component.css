@@ -171,9 +171,6 @@ label {
   margin-inline: auto;
   width: 90%;
 }
-#edit-btn {
-  visibility: hidden;
-}
 
 @media (max-width: 380px) {
   .nav-btn {

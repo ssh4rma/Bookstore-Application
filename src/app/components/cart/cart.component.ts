@@ -52,7 +52,7 @@ export class CartComponent implements OnInit {
   items: any[] = [];
   dialog = inject(MatDialog);
   clickedIndex: null | number = null;
-  
+
   name = '';
   mobnumber = '';
   addressArray: any[] = [];
@@ -67,12 +67,20 @@ export class CartComponent implements OnInit {
   continueToOrderSummary = false;
   defaultPanel = true;
 
+  totalAmount = 0;
+
   addressForm!: FormGroup;
 
   ngOnInit(): void {
     this.loadUserData();
     this.loadAddresses();
     this.loadCartItems();
+  }
+
+  calTotal(): void {
+    for (let item of this.items) {
+      this.totalAmount += item.product_id.discountPrice * item.quantityToBuy;
+    }
   }
 
   initializeAddressForm(): void {
@@ -103,6 +111,7 @@ export class CartComponent implements OnInit {
     this.cartService.cartList$.subscribe({
       next: (res: any) => {
         this.items = res.result;
+        this.calTotal();
       },
       error: (err) => {
         console.error(err);

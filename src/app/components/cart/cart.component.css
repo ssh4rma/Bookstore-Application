@@ -366,3 +366,48 @@ tr {
   font: normal normal normal 14px/16px Roboto, sans-serif;
   height: 80px;
 }
+
+.list-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  padding: 25px;
+}
+
+.order-sum-list-book-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40%;
+  width: 100%;
+}
+
+.order-summary-info {
+  width: 250px;
+}
+
+.quantiy-with-price {
+  width: 55px;
+}
+
+#final-price {
+  width: 20px;
+  text-align: right;
+  font-size: 16px;
+}
+
+.total-price {
+  width: 151px;
+  height: 35px;
+  margin-left: 80%;
+}
+
+.total-price > span {
+  font-size: 20px;
+}
+
+.order-summary-book-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

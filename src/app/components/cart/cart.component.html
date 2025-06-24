@@ -347,31 +347,47 @@
                     alt="book-cover"
                   />
                 </div>
-                <div class="list-book-info">
-                  <div class="info">
-                    <div class="title">
-                      <span id="book-title">{{
-                        item?.product_id?.bookName
-                      }}</span>
-                    </div>
-                    <div class="author">
-                      <span id="book-author"
-                        >by {{ item?.product_id?.author }}</span
-                      >
-                    </div>
-                    <div class="price">
-                      <span id="disPrice">
-                        <b>Rs.{{ item?.product_id?.discountPrice || 0 }}</b>
-                        <span id="actualPrice"
-                          >Rs.{{ item?.product_id?.price || 0 }}</span
+                <div class="order-sum-list-book-info">
+                  <div class="order-summary-info">
+                    <div class="order-summary-book-info">
+                      <div class="title">
+                        <span id="book-title">{{
+                          item?.product_id?.bookName
+                        }}</span>
+                      </div>
+                      <div class="author">
+                        <span id="book-author"
+                          >by {{ item?.product_id?.author }}</span
                         >
-                      </span>
+                      </div>
+                      <div class="price">
+                        <span id="disPrice">
+                          <b>Rs.{{ item?.product_id?.discountPrice || 0 }}</b>
+                          <span id="actualPrice"
+                            >Rs.{{ item?.product_id?.price || 0 }}</span
+                          >
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="quantity-with-price">
+                      <span id="final-price"
+                        ><b
+                          >{{ item?.quantityToBuy }} *
+                          {{ item?.product_id?.discountPrice }}</b
+                        ></span
+                      >
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
+            <div class="total-price">
+              <span
+                ><b>To Pay: {{ totalAmount }}</b></span
+              >
+            </div>
             <button
               style="cursor: pointer"
               (click)="onClickCheckout()"

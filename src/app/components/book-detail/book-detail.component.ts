@@ -50,6 +50,7 @@ export class BookDetailComponent {
   showQuantBtn = false;
 
   feedbackList: any[] = [];
+  cartItems: any[] = [];
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
@@ -76,6 +77,23 @@ export class BookDetailComponent {
         this.feedbackList = res.result.slice().reverse();
       },
       error: (err) => console.log(err),
+    });
+
+    this.loadCartItems();
+  }
+
+  loadCartItems(): void {
+    this.cartService.getAllCartItems();
+    this.cartService.cartList$.subscribe({
+      next: (res: any) => {
+        this.cartItems = res.result.filter((book: any) => {
+          return book.product_id._id === this.productId;
+        });
+        this.showQuantBtn = this.cartItems.length > 0;
+      },
+      error: (err) => {
+        console.error(err);
+      },
     });
   }
 
@@ -161,7 +179,9 @@ export class BookDetailComponent {
     this.showQuantBtn = true;
   }
 
+  isItemWishlisted = false;
   onClickAddToWishList(): void {
+    this.isItemWishlisted = true;
     this.wishlistService.postWishList(this.productId).subscribe({
       next: (res: any) => {},
       error: (err) => console.log(err),
@@ -169,42 +189,38 @@ export class BookDetailComponent {
   }
 
   decreaseQuant(): void {
-    let freq = this.targetProduct[0].quantity;
+    let freq = this.cartItems[0].quantityToBuy;
+
     freq = freq - 1;
 
     if (freq >= 1) {
       let data = {
         quantityToBuy: freq,
       };
-      this.cartService
-        .updateCartItemQuant(this.targetProduct[0]._id, data)
-        .subscribe({
-          next: () => {
-            this.targetProduct[0].quantity = freq;
-            this.cartService.getAllCartItems();
-          },
-          error: (err) => console.log(err),
-        });
+      this.cartService.updateCartItemQuant(this.productId, data).subscribe({
+        next: (res: any) => {
+          console.log(res);
+          this.loadCartItems();
+        },
+        error: (err) => console.log(err),
+      });
     } else alert('Quantity should be between 1 to 10');
   }
 
   increaseQuant(): void {
-    let freq = this.targetProduct[0].quantity;
+    let freq = this.cartItems[0].quantityToBuy;
     freq = freq + 1;
 
     if (freq <= 10) {
       let data = {
         quantityToBuy: freq,
       };
-      this.cartService
-        .updateCartItemQuant(this.targetProduct[0]._id, data)
-        .subscribe({
-          next: () => {
-            this.targetProduct[0].quantity = freq;
-            this.cartService.getAllCartItems();
-          },
-          error: (err) => console.log(err),
-        });
+      this.cartService.updateCartItemQuant(this.productId, data).subscribe({
+        next: () => {
+          this.loadCartItems();
+        },
+        error: (err) => console.log(err),
+      });
     } else alert('Quantity should be between 1 to 10');
   }
 }
