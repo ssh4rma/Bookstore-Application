@@ -110,6 +110,7 @@ export class CartComponent implements OnInit {
     this.cartService.getAllCartItems();
     this.cartService.cartList$.subscribe({
       next: (res: any) => {
+        // console.log('this is cart response', res);
         this.items = res.result;
         this.calTotal();
       },
@@ -159,6 +160,7 @@ export class CartComponent implements OnInit {
 
   increaseQuant(productId: any): void {
     const item = this.items.find((i) => i._id === productId);
+    console.log('product id of moonlight in cart', productId);
 
     let freq = item.quantityToBuy;
     freq = freq + 1;

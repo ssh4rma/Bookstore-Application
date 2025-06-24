@@ -189,6 +189,7 @@ export class BookDetailComponent {
   }
 
   decreaseQuant(): void {
+    let cartProductId = this.cartItems[0]._id;
     let freq = this.cartItems[0].quantityToBuy;
 
     freq = freq - 1;
@@ -197,9 +198,9 @@ export class BookDetailComponent {
       let data = {
         quantityToBuy: freq,
       };
-      this.cartService.updateCartItemQuant(this.productId, data).subscribe({
+      this.cartService.updateCartItemQuant(cartProductId, data).subscribe({
         next: (res: any) => {
-          console.log(res);
+          // console.log(res);
           this.loadCartItems();
         },
         error: (err) => console.log(err),
@@ -208,15 +209,18 @@ export class BookDetailComponent {
   }
 
   increaseQuant(): void {
+    let cartProductId = this.cartItems[0]._id;
     let freq = this.cartItems[0].quantityToBuy;
+    console.log('moonlight product id in book detail', this.productId);
     freq = freq + 1;
 
     if (freq <= 10) {
       let data = {
         quantityToBuy: freq,
       };
-      this.cartService.updateCartItemQuant(this.productId, data).subscribe({
-        next: () => {
+      this.cartService.updateCartItemQuant(cartProductId, data).subscribe({
+        next: (res: any) => {
+          // console.log(res);
           this.loadCartItems();
         },
         error: (err) => console.log(err),
