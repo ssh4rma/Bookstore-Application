@@ -2,6 +2,9 @@
 
 This is a online bookstore web application where you can search, buy, and manage books just like a real bookstore. You can login, add books to your cart or wishlist, and place orders. The whole app is made using Angular.
 
+## Project Demonstration
+https://www.youtube.com/watch?v=b2JaZsEZBxw
+
 ## Features
 
 ### 1. Home Page
